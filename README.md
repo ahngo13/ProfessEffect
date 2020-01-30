@@ -2,7 +2,15 @@
 떠벌림
 
 ### git 글로벌 변수 설정
+1.git config --global user.name 이름
+
+ex)
+
 git config --global user.name hamletshu
+
+2. git config --global user.name 이메일
+
+ex)
 
 git config --global user.email ahngo13@naver.com
 

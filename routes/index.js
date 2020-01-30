@@ -16,7 +16,7 @@ router.post('/join', (req,res)=>{
 	const name = req.body.name;
 	const nickName = req.body.nickName;
     const pw = req.body.pw;
-    
+     
     if(req.session.email){
         logind=1;
     }else{

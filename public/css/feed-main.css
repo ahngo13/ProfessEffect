@@ -1,0 +1,37 @@
+/* feed-main */
+
+/* feed 이미지 */
+.feedimg {
+	width: 100%;
+}
+
+/* feed list */
+.feed-list {
+	border-style: solid;
+	border-color: #BFBFBF;
+	border-width: thin;
+	border-radius: 5px;
+	background-color: white;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+/* feed list 헤더 */
+.feed-list-header, .feed-list-button, .feed-list-text {
+	margin: 5px;
+}
+/* feed list 댓글 */
+.feed-list-reply {
+	margin: 5px 20px 5px 20px;
+}
+
+/* 떠벌림 친구 목록 타이틀 */
+.feed-friend-title {
+	text-align: center;
+	font-weight: bold;
+	font-size: 40px;
+}
+
+/* feed 버튼 마진 추가 */
+.feed-list-button > i{
+	margin: 0px 5px 0px 5px
+}

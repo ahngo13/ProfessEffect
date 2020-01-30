@@ -1,0 +1,39 @@
+/* 메인페이지 CSS */
+/* 롤링 배너 이미지 */
+ #main-slide-img img {
+     width: 240px;
+ }
+ /* 텍스트 가운데 정렬 */
+ .text-align-center{
+ 	text-align: center;
+ }
+ /* 로그인/회원가입 폼 너비 설정 */
+ .join-login-form{
+ 	width: 70%;
+ }
+
+/* 메인 폼 회원가입 에러 메시지 */
+#join-error-msg{
+	color: red;
+}
+
+/* 메인 폼 로그인 에러 메시지 */
+#login-error-msg{
+	color: red;
+}
+ 
+ /* 메인 영역 슬라이드 배너 미디어 쿼리 */
+@media screen and (max-width: 780px) {
+	#main-slide-banner {
+		display: none;
+	}
+}
+
+/* 메인 영역 메인폼 미디어 쿼리 */
+@media screen and (max-width: 780px) {
+	#main-form {
+		flex: 0 0 100%;
+    	max-width: 100%;
+	}
+}
+

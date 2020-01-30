@@ -1,0 +1,73 @@
+/* 공통 CSS */
+/* 폰트 추가 */
+ @font-face {
+  font-family: makgeolli;
+  src: url('../fonts/MAKGEOLLI.ttf');
+}
+ @font-face {
+  font-family: sdmisaeng;
+  src: url('../fonts/sdmisaeng.ttf');
+}
+ @font-face {
+  font-family: SDSwaggerTTF;
+  src: url('../fonts/SDSwaggerTTF.ttf');
+}
+/* body 영역 글꼴 세팅 */
+body{
+	font-family: sdmisaeng;
+	font-size: 1.7em;
+}
+/* 마진값 5px */
+.margin-5{
+	margin: 5px;
+}
+
+/* 페이지 메인 콘텐츠 */
+.main-row{
+   border-style: solid;
+   border-color: #BFBFBF;
+   padding: 1em;
+   border-width: thin;
+   border-radius: 2em;
+   background-color: #fafafa;
+}
+/* 아이콘 이미지 */
+.icon-img{
+	width: 32px;
+	height: 32px;
+}
+/* 로고 글꼴 설정 */
+.logo-text{
+	font-family: makgeolli;
+}
+/* 닉네임 글씨 진하게 */
+.nickname {
+	font-weight:bold;
+	color: black;
+}
+
+/* 상단 메뉴바 */
+.menu-bar{
+	font-family: makgeolli;
+	border-bottom-style: solid;
+	border-bottom-color: #BFBFBF;
+	border-bottom-width: thin;
+	background-color: white;
+}
+
+/* 상단 메뉴 요소*/
+.menu-bar-items{
+	margin: 0px 5px 0px 5px; 
+}
+
+/* 검색창 영역 미디어 쿼리 */
+@media screen and (max-width: 800px) {
+	#searchNickName {
+		display: none;
+	}
+}
+
+/* 가운데 정렬 */
+.margin-auto{
+	margin: 0 auto;
+}

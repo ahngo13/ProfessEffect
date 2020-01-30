@@ -18,6 +18,6 @@ git config --global user.email 이메일
 ex)
 git config --global user.email ahngo13@naver.com
 
-### 이미 존재하는 Github의 레포지토리와 연동
+### 이미 존재하는 Github의 레포지토리와 연동(글로벌 변수 설정 이후 바로 진행)
 
 git clone https://github.com/ahngo13/ProfessEffect

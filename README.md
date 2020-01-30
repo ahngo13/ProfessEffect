@@ -8,7 +8,7 @@ git config --global user.name 이름
 ex)
 git config --global user.name hamletshu
 
-git config --global user.name 이메일
+git config --global user.email 이메일
 
 ex)
 git config --global user.email ahngo13@naver.com

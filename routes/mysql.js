@@ -5,7 +5,7 @@ const con = mysql.createConnection({
     user: "root",
     password: "mysql",
     port:"3307",
-    database:"nodejs"
+    database:"professeffect"
 });
 
 module.exports = con;

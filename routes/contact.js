@@ -17,11 +17,11 @@ router.post('/',(req,res,next)=>{
     con.query(sql, function (err, result, fields) {
         if (err) {
             console.log(err);
-            res.json({ message: '회원가입 실패 하셨습니다.' })
+            res.json({ message: '회원가입 실패 하셨습니다.', errYn : '1' })
         } else {
             console.log(result.length);
             if (result[0]) {
-                res.json({ message: `이메일이 중복됩니다.`, JoinGb: 'email' });
+                res.json({ message: `이메일이 중복됩니다.`, JoinGb: 'email', errYn : '1' });
                 
             } else {
                 sql = `SELECT * FROM USER WHERE nick_name='${joinNickName}'`;
@@ -29,21 +29,21 @@ router.post('/',(req,res,next)=>{
                 con.query(sql, function (err, result, fields) {
                     if (err) {
                         console.log(err);
-                        res.json({ message: '회원가입 실패 하셨습니다.'})
+                        res.json({ message: '회원가입 실패 하셨습니다.', errYn : '1'})
                     } else {
                         console.log(result.length);
                         if (result[0]) {
-                            res.json({ message: `닉네임이 중복됩니다.`, JoinGb: 'nickname'});
+                            res.json({ message: `닉네임이 중복됩니다.`, JoinGb: 'nickname', errYn : '1'});
                         } else {
                             sql = `INSERT INTO user (user_email, password, user_name, nick_name) VALUES ('${joinEmail}','${joinPw}','${joinName}','${joinNickName}')`;
                             console.log(sql);
                             con.query(sql, (err, result) =>{
                                 if (err) {
                                     console.log("insert fail", err);
-                                    res.json({message:"회원가입 실패"});
+                                    res.json({message:"회원가입 실패", errYn : '1'});
                                 }else{
                                     console.log("1 record inserted");
-                                    res.render('join-success-section', {result, message:"회원가입 되었습니다", JoinGb: `${joinName}`});
+                                    res.render('join-success-section', {result, message:"회원가입 되었습니다", joinName: `${joinName}`});
                                 }
                             });
                         }

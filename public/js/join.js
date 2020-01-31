@@ -36,11 +36,15 @@ $(document).ready(function(){
 
 		$.post('/contact', send_param, function(resultData){
 			//alert(resultData.message);
-			$('#join-error-msg').html(resultData.message);
-			if(resultData.JoinGb=='email'){
-				$('#joinEmail').focus();
-			}else if(resultData.JoinGb=='nickname'){
-				$('#joinNickName').focus();
+			if(resultData.errYn == '1'){
+				$('#join-error-msg').html(resultData.message);
+				if(resultData.JoinGb=='email'){
+					$('#joinEmail').focus();
+					return;
+				}else if(resultData.JoinGb=='nickname'){
+					$('#joinNickName').focus();
+					return;
+				}
 			}else{
 				$('#content-area').html(resultData);
 			}

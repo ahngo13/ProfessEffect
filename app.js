@@ -7,6 +7,7 @@ const indexRouter = require('./routes/index');
 const contactRouter = require('./routes/contact');
 const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
+const userInfoRouter = require('./routes/user-info');
 const basketRouter = require('./routes/basket');
 
 const app = express();
@@ -30,6 +31,7 @@ app.use(session({
 }));
 
 app.use('/', indexRouter);
+app.use('/user-info', userInfoRouter);
 app.use('/logout', logoutRouter);
 app.use('/login', loginRouter);
 app.use('/contact', contactRouter);

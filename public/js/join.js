@@ -44,33 +44,6 @@ $(document).ready(function(){
 			}else{
 				$('#content-area').html(resultData);
 			}
-
-			
         });
-/* 		const send_data_temp={
-				email:joinEmail,
-				name:joinName,
-				nickName:joinNickName,
-				pw:joinPw
-		}; */
-		
-		
-		//const send_data=JSON.stringify(send_data_temp);
-		
-	//	$.post('/join', send_data, function(returnData,status){
-			/* if(returnData.resultCode){
-				let join_success_form="<div id='content-area' class='container' style='margin-top: 30px; margin-bottom: 30px;'>";
-				  join_success_form+="<div class='row main-row' style='text-align: center;'>";
-				  join_success_form+="<div class='col-sm-12' style='margin: auto;'>";
-				  join_success_form+="<img src='./image/joinsuccess.jpg' class='img-thumbnail' style='border-radius: 100px'>";
-				  join_success_form+="<div>"+ returnData.name +"님 가입완료 되었습니다.</div>";
-				  join_success_form+="<div>이제 떠벌림 세계에서 많은 목표를 달성하시기 바랍니다.</div>"
-				  join_success_form+="<input type='button' id='goMain' class='btn btn-primary margin-5' value='메인 페이지로 이동'></input>"
-				  join_success_form+="</div></div></div>";
-				  $('#content-area').html(join_success_form);
-			}else{
-				$('#join-error-msg').html(returnData.message);
-			} */
-	//	});
 	});
 });

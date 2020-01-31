@@ -1,54 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>블록체인 기반 SNS 떠벌림</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<script src="js/login.js"></script>
-<script src="js/common.js"></script>	
 
-<style type="text/css">
-@import url("css/common.css");
-@import url("css/feed-main.css");
-</style>
-</head>
-<body>
-	<!-- navigation bar -->
-	<div id="nav-area">
-		 <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top justify-content-center menu-bar">
-			<a class="navbar-brand menu-bar-items" style="font-size: 50px" href="index.html">Profess Effect</a>
-			<div class="input-group menu-bar-items" id="searchNickName" style="width: 20%">
-				<div class="input-group-prepend">
-					<span class="input-group-text">@</span>
-				</div>
-				<input type="text" class="form-control" placeholder="Username">
-			</div>
-			<div style="margin: 0px 10px 0px 10px">
-			<a class="menu-bar-items"onclick="javascript:goUserInfo();">
-				<i class='far fa-user-circle' style='font-size:32px;color:rgb(38, 38, 38);'></i>
-			</a>
-			<a class="menu-bar-items" onclick="javascript:goFriendList();">
-				<i class='fas fa-users' style='font-size:32px;color:rgb(38, 38, 38);'></i>
-			</a>
-			<a class="menu-bar-items" onclick="javascript:goProfessWriteForm();">
-				<i class='fas fa-pen' style='font-size:32px;color:rgb(38, 38, 38);'></i>
-			</a>
-			<a class="menu-bar-items" onclick="javascirpt:logout();">
-				<i class='fas fa-sign-out-alt' style='font-size:32px;color:rgb(38, 38, 38);'></i>
-			</a>
-			</div>
-		</nav> 
-	</div>
-	<!--// navigation bar -->
-
+	<%- include('feed-header') %>
 	<!-- content area -->
 	<div id="content-area" class="container" style="margin-top: 120px; margin-bottom: 30px;">
 		<div class="row main-row">
@@ -241,9 +192,4 @@
 	</div>
 	<!--// content area -->
 	<!--// footer area -->
-	<div class="jumbotron text-center" style="margin-bottom: 0; background-color: white; padding: 20px 0 0 0;">
-		<p>© 2020 Hamletshu</p>
-	</div>
-	<!--// footer area -->
-</body>
-</html>
+	<%- include('footer') %>

@@ -5,7 +5,7 @@ const con = require('./mysql');
 router.post('/', (req,res)=>{
     let message;
     
-    const sql = `SELECT * FROM user where user_email='${req.body.email}' and password='${req.body.pw}'`;
+    let sql = `SELECT * FROM user where user_email='${req.body.email}' and password='${req.body.pw}'`;
     console.log(sql);
     con.query(sql, function (err, result, fields) {
         if (err) {
@@ -14,10 +14,28 @@ router.post('/', (req,res)=>{
             console.log(result.length);
             if(result.length > 0){
                 req.session.email = req.body.email;
-                req.session.nickname  = result[0].nick_name;
-                message = "login ok";
-                console.log(message);
-                res.render('feed-main-section', {nickname:req.session.nickname, result});
+                console.log("LOGIN OK");
+                
+                sql = `SELECT R1.* FROM(
+                    SELECT * FROM PROFESSDT
+                    order by PROFESSDT.PROFESS_NO DESC
+                    )R1
+                    LIMIT 10 OFFSET 10`;
+                console.log(sql);
+                con.query(sql, function (err, result, fields) {
+                    if (err) {
+                        console.log(err);
+                    }else{
+                        console.log(result.length);
+                        if(result.length > 0){
+                            console.log("FEEDLIST SELECT OK");
+                            res.render('feed-main-section', {result});
+                        }else{
+                            res.render('feed-main-section', {dataYn : '0'});
+                      }
+                        // res.json({message:message});
+                    }
+                });
             }else{
                 message = "login Fail";
                 console.log(message);

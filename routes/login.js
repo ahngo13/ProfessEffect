@@ -14,7 +14,7 @@ router.post('/', (req,res)=>{
             console.log(result.length);
             if(result.length > 0){
                 req.session.email = req.body.email;
-                req.session.nickname  = result[0].nickname;
+                req.session.nickname  = result[0].nick_name;
                 message = "login ok";
                 console.log(message);
                 res.render('feed-main-section', {nickname:req.session.nickname, result});

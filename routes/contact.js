@@ -7,10 +7,11 @@ const con = require('./mysql');
 router.post('/',(req,res,next)=>{
     
     console.log("Connected!");
-    const name = req.body.name;
-    const email = req.body.email;
-    const comments= req.body.comments
-    var sql = `INSERT INTO members (name, email, comments) VALUES ('${name}','${email}','${comments}')`;
+    const joinEmail = req.body.joinEmail;
+    const joinPw= req.body.joinPw;
+    const joinName = req.body.joinName;
+    const joinNickName= req.body.joinNickName;
+    var sql = `INSERT INTO user (user_email, password, user_name, nick_name) VALUES ('${joinEmail}','${joinPw}','${joinName}','${joinNickName}')`;
     console.log(sql);
     con.query(sql, (err, result) =>{
         if (err) {

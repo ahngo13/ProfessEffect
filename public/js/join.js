@@ -41,6 +41,8 @@ $(document).ready(function(){
 				$('#joinEmail').focus();
 			}else if(resultData.JoinGb=='nickname'){
 				$('#joinNickName').focus();
+			}else{
+				$('#content-area').html(resultData);
 			}
 
 			

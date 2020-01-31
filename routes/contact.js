@@ -43,7 +43,7 @@ router.post('/',(req,res,next)=>{
                                     res.json({message:"회원가입 실패"});
                                 }else{
                                     console.log("1 record inserted");
-                                    res.json({message:"회원가입 되었습니다"});
+                                    res.render('join-success-section', {result, message:"회원가입 되었습니다", JoinGb: `${joinName}`});
                                 }
                             });
                         }

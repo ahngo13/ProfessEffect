@@ -6,7 +6,8 @@ function logout(){
 }
 function goUserInfo(){
     $.post('/user-info',{},function(resultData){
-        alert(resultData.message);
+        //alert(resultData.message);
+        $('#content-area').html(resultData);
     });
 }
 

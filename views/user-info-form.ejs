@@ -1,0 +1,12 @@
+<div class="col-sm-12">
+    <div class="margin-auto text-center">
+        <div class="form-group">
+            <input type="email" readonly class="form-control margin-5" id="userInfoEmail"	value="<%= result[0].user_email %>">
+            <input type="text" readonly class="form-control margin-5" id="userInfoName" value="<%= result[0].user_name %>">
+            <input type="text" class="form-control margin-5" id="userInfoName" placeholder="<%= result[0].nick_name %>">
+            <input type="password" class="form-control margin-5" id="userInfoPw" placeholder="비밀번호"></input> 
+            <input type="button" class="btn btn-primary btn-block margin-5" id="edit_user_info_btn" value="수정하기"></input>
+        </div>
+        <div id="user-info-error-msg"></div>
+    </div>
+</div>

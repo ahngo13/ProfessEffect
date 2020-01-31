@@ -3,23 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>블록체인 기반 SNS 떠벌림</title>
-<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-<!-- jQuery library -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<!-- Popper JS -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="js/login.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script src="js/login.js"></script>
+<script src="js/common.js"></script>
 
 <style type="text/css">
 @import url("css/common.css");
@@ -38,15 +32,18 @@
 				<input type="text" class="form-control" placeholder="Username">
 			</div>
 			<div style="margin: 0px 10px 0px 10px">
-			<a class="menu-bar-items" href="#">
+			<a class="menu-bar-items">
 				<i class='far fa-user-circle' style='font-size:32px;color:rgb(38, 38, 38);'></i>
 			</a>
-			<a class="menu-bar-items" href="#">
+			<a class="menu-bar-items">
 				<i class='fas fa-users' style='font-size:32px;color:rgb(38, 38, 38);'></i>
 			</a>
-			<a class="menu-bar-items" href="#">
+			<a class="menu-bar-items">
 				<i class='fas fa-pen' style='font-size:32px;color:rgb(38, 38, 38);'></i>
-				</a>
+			</a>
+			<a class="menu-bar-items" onclick="javascirpt:logout();">
+				<i class='fas fa-sign-out-alt' style='font-size:32px;color:rgb(38, 38, 38);'></i>
+			</a>
 			</div>
 		</nav> 
 	</div>

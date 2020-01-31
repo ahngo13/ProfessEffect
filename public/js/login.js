@@ -39,12 +39,6 @@ $(document).ready(function(){
 			// }
 		});
 	});
-	
-	$(document).on("click","#goMain",function(){
-//		alert();
-		location.href="index.html";
-	});
-	
 });
 
 function getFriendFeed(num){

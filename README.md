@@ -36,3 +36,12 @@ git config --global user.email ahngo13@naver.com
 ### 2.이미 존재하는 Github의 레포지토리와 연동(글로벌 변수 설정 이후 바로 진행)
 
 git clone https://github.com/ahngo13/ProfessEffect
+
+## 개발시 공유사항
+
+MySql 컬럼 작명 시 스네이크 표기법 기준
+
+Table 생성 시 insert_date, update_date 기본 컬럼 추가
+
+html, css, js 등 일반 변수의 경우 카멜 표기법 기준
+

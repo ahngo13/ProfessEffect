@@ -7,7 +7,6 @@ $(document).ready(function(){
 		const joinPw= $('#joinPw').val();
 		const joinName= $('#joinName').val();
 		const joinNickName= $('#joinNickName').val();
-//		alert(id_val + ":" + pw_val);
 		
 		let errMsg = '';
 		
@@ -35,8 +34,16 @@ $(document).ready(function(){
 		
 		const send_param = {joinEmail, joinPw, joinName, joinNickName};
 
-		$.post('contact', send_param, function(resultData){
-            alert(resultData.message);
+		$.post('/contact', send_param, function(resultData){
+			//alert(resultData.message);
+			$('#join-error-msg').html(resultData.message);
+			if(resultData.JoinGb=='email'){
+				$('#joinEmail').focus();
+			}else if(resultData.JoinGb=='nickname'){
+				$('#joinNickName').focus();
+			}
+
+			
         });
 /* 		const send_data_temp={
 				email:joinEmail,

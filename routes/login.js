@@ -5,7 +5,7 @@ const con = require('./mysql');
 router.post('/', (req,res)=>{
     let message;
     
-    let sql = `SELECT * FROM user where user_email='${req.body.email}' and password='${req.body.pw}'`;
+    let sql = `SELECT * FROM user where user_email=${con.escape(req.body.email)} and password=${con.escape(req.body.pw)} and use_yn='1'`;
     console.log(sql);
     con.query(sql, function (err, result, fields) {
         if (err) {

@@ -23,7 +23,7 @@ function goProfessWriteForm(){
     $.post('/feed',{},function(resultData){
         $('#nav-area').remove();
         $('#footer').remove();
-        $('#content-area').css('margin-top', '30px');
+        $('#content-area').css('margin-top', '120px');
         $('#content-area').html(resultData);
     });
 }

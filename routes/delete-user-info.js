@@ -7,7 +7,7 @@ router.post('/',(req,res,next)=>{
 
     const userInfoEmail = req.body.userInfoEmail;
 
-    let sql = `UPDATE USER SET USE_YN = '0' WHERE USER_EMAIL = '${userInfoEmail}'`;
+    let sql = `UPDATE USER SET USE_YN = '0' WHERE USER_EMAIL = ${con.escape(userInfoEmail)}`;
     con.query(sql, (err, result) =>{
         if (err) {
             console.log("delete fail");

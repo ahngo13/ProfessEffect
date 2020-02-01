@@ -7,7 +7,7 @@ router.post('/', (req,res)=>{
     let message;
     
     if(req.session.email){
-        const sql = `SELECT * FROM user where user_email='${CurrentEmail}'`;
+        const sql = `SELECT * FROM user where user_email=${con.escape(CurrentEmail)}`;
         console.log(sql);
         con.query(sql, function (err, result, fields) {
             if (err) {

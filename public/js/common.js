@@ -8,7 +8,7 @@ function goUserInfo(){
      $.post('/user-info',{},function(resultData){ 
         $('#nav-area').remove();
         $('#footer').remove();
-        $('#content-area').css('margin-top', '30px');
+         $('#content-area').css('margin-top', '120px');
         $('#content-area').html(resultData);
     });
 }
@@ -53,6 +53,22 @@ function EditUserInfoBtn(){
         }
     });
     
+}
+
+function deleteUserInfoBtn(){
+    const userInfoEmail = $('#userInfoEmail').val();
+
+    //alert(userInfoEmail);
+    const send_param = {userInfoEmail};
+
+    var result = confirm('정말로 탈퇴하겠습니까?');
+    if(result) {
+        $.post('/delete-user-info', send_param, function(resultData){
+            alert(resultData.message);
+        });
+    }else{
+        alert('탈퇴가 취소되었습니다.');
+    }
 }
 
 $(document).ready(function(){

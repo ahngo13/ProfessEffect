@@ -9,6 +9,7 @@ const loginRouter = require('./routes/login');
 const logoutRouter = require('./routes/logout');
 const userInfoRouter = require('./routes/user-info');
 const editUserInfoRouter = require('./routes/edit-user-info');
+const deleteUserInfoRouter = require('./routes/delete-user-info');
 const basketRouter = require('./routes/basket');
 const feedRouter = require('./routes/feed');
 
@@ -35,6 +36,7 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/user-info', userInfoRouter);
 app.use('/edit-user-info', editUserInfoRouter);
+app.use('/delete-user-info', deleteUserInfoRouter);
 app.use('/logout', logoutRouter);
 app.use('/login', loginRouter);
 app.use('/contact', contactRouter);

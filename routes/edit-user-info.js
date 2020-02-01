@@ -29,7 +29,7 @@ router.post('/',(req,res,next)=>{
         res.json({message:"\'비밀번호\'와 \'비밀번호 확인\'이 일치하지 않습니다.", EditGb:"password"});
         return;
     }else{
-        sql = `UPDATE USER SET NICK_NAME = '${userInfoNickjName}' WHERE USER_EMAIL = '${userInfoEmail}'`
+        sql = `UPDATE USER SET NICK_NAME = '${userInfoNickjName}' WHERE USER_EMAIL = '${userInfoEmail}'`;
         con.query(sql, (err, result) =>{
             if (err) {
                 console.log("insert fail");
@@ -37,7 +37,7 @@ router.post('/',(req,res,next)=>{
             }else{
                 console.log("1 nickname UPDATE");
                 //res.json({message:"닉네임 수정 성공"});
-                sql = `UPDATE USER SET PASSWORD = '${userInfoPw}' WHERE USER_EMAIL = '${userInfoEmail}'`
+                sql = `UPDATE USER SET PASSWORD = '${userInfoPw}' WHERE USER_EMAIL = '${userInfoEmail}'`;
                 con.query(sql, (err, result) =>{
                     if (err) {
                         console.log("insert fail");

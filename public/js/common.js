@@ -6,6 +6,9 @@ function logout(){
 }
 function goUserInfo(){
      $.post('/user-info',{},function(resultData){ 
+        $('#nav-area').remove();
+        $('#footer').remove();
+        $('#content-area').css('margin-top', '30px');
         $('#content-area').html(resultData);
     });
 }

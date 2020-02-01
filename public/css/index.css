@@ -1,39 +1,39 @@
-/* ¸ŞÀÎÆäÀÌÁö CSS */
-/* ·Ñ¸µ ¹è³Ê ÀÌ¹ÌÁö */
- #main-slide-img img {
-     width: 240px;
- }
- /* ÅØ½ºÆ® °¡¿îµ¥ Á¤·Ä */
- .text-align-center{
- 	text-align: center;
- }
- /* ·Î±×ÀÎ/È¸¿ø°¡ÀÔ Æû ³Êºñ ¼³Á¤ */
- .join-login-form{
- 	width: 70%;
- }
+/* ë©”ì¸í˜ì´ì§€ CSS */
+/* ë¡¤ë§ ë°°ë„ˆ ì´ë¯¸ì§€ */
+#main-slide-img img {
+	width: 240px;
+}
+/* í…ìŠ¤íŠ¸ ê°€ìš´ë° ì •ë ¬ */
+.text-align-center{
+	text-align: center;
+}
+/* ë¡œê·¸ì¸/íšŒì›ê°€ì… í¼ ë„ˆë¹„ ì„¤ì • */
+.join-login-form{
+	width: 70%;
+}
 
-/* ¸ŞÀÎ Æû È¸¿ø°¡ÀÔ ¿¡·¯ ¸Ş½ÃÁö */
+/* ë©”ì¸ í¼ íšŒì›ê°€ì… ì—ëŸ¬ ë©”ì‹œì§€ */
 #join-error-msg{
-	color: red;
+   color: red;
 }
 
-/* ¸ŞÀÎ Æû ·Î±×ÀÎ ¿¡·¯ ¸Ş½ÃÁö */
+/* ë©”ì¸ í¼ ë¡œê·¸ì¸ ì—ëŸ¬ ë©”ì‹œì§€ */
 #login-error-msg{
-	color: red;
-}
- 
- /* ¸ŞÀÎ ¿µ¿ª ½½¶óÀÌµå ¹è³Ê ¹Ìµğ¾î Äõ¸® */
-@media screen and (max-width: 780px) {
-	#main-slide-banner {
-		display: none;
-	}
+   color: red;
 }
 
-/* ¸ŞÀÎ ¿µ¿ª ¸ŞÀÎÆû ¹Ìµğ¾î Äõ¸® */
+/* ë©”ì¸ ì˜ì—­ ìŠ¬ë¼ì´ë“œ ë°°ë„ˆ ë¯¸ë””ì–´ ì¿¼ë¦¬ */
 @media screen and (max-width: 780px) {
-	#main-form {
-		flex: 0 0 100%;
-    	max-width: 100%;
-	}
+   #main-slide-banner {
+	   display: none;
+   }
+}
+
+/* ë©”ì¸ ì˜ì—­ ë©”ì¸í¼ ë¯¸ë””ì–´ ì¿¼ë¦¬ */
+@media screen and (max-width: 780px) {
+   #main-form {
+	   flex: 0 0 100%;
+	   max-width: 100%;
+   }
 }
 

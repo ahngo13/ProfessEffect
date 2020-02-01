@@ -108,3 +108,13 @@ CREATE TABLE `professeffect`.`professdt` (
   PRIMARY KEY (`profess_no`))
 ~~~
 
+### 떠벌림 카테고리
+
+~~~sql
+CREATE TABLE `category` (
+  `category_id` int(3) NOT NULL,
+  `category_name` text NOT NULL,
+  `use_yn` varchar(2) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+~~~

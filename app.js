@@ -17,6 +17,7 @@ const app = express();
 
 app.use(express.static(path.join(__dirname,"public")));
 app.set('view engine','ejs');
+app.use('/upload', express.static('uploads'));
 
 // 배열 같은 데이터도 파싱 가능
 app.use(express.urlencoded({extended:true}));

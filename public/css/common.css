@@ -1,73 +1,74 @@
-/* °øÅë CSS */
-/* ÆùÆ® Ãß°¡ */
- @font-face {
-  font-family: makgeolli;
-  src: url('../fonts/MAKGEOLLI.ttf');
-}
- @font-face {
-  font-family: sdmisaeng;
-  src: url('../fonts/sdmisaeng.ttf');
-}
- @font-face {
-  font-family: SDSwaggerTTF;
-  src: url('../fonts/SDSwaggerTTF.ttf');
-}
-/* body ¿µ¿ª ±Û²Ã ¼¼ÆÃ */
-body{
+/* ê³µí†µ CSS */
+/* í°íŠ¸ ì¶”ê°€ */
+@font-face {
+	font-family: makgeolli;
+	src: url('../fonts/MAKGEOLLI.ttf');
+  }
+   @font-face {
 	font-family: sdmisaeng;
-	font-size: 1.7em;
-}
-/* ¸¶Áø°ª 5px */
-.margin-5{
-	margin: 5px;
-}
-
-/* ÆäÀÌÁö ¸ŞÀÎ ÄÜÅÙÃ÷ */
-.main-row{
-   border-style: solid;
-   border-color: #BFBFBF;
-   padding: 1em;
-   border-width: thin;
-   border-radius: 2em;
-   background-color: #fafafa;
-}
-/* ¾ÆÀÌÄÜ ÀÌ¹ÌÁö */
-.icon-img{
-	width: 32px;
-	height: 32px;
-}
-/* ·Î°í ±Û²Ã ¼³Á¤ */
-.logo-text{
-	font-family: makgeolli;
-}
-/* ´Ğ³×ÀÓ ±Û¾¾ ÁøÇÏ°Ô */
-.nickname {
-	font-weight:bold;
-	color: black;
-}
-
-/* »ó´Ü ¸Ş´º¹Ù */
-.menu-bar{
-	font-family: makgeolli;
-	border-bottom-style: solid;
-	border-bottom-color: #BFBFBF;
-	border-bottom-width: thin;
-	background-color: white;
-}
-
-/* »ó´Ü ¸Ş´º ¿ä¼Ò*/
-.menu-bar-items{
-	margin: 0px 5px 0px 5px; 
-}
-
-/* °Ë»öÃ¢ ¿µ¿ª ¹Ìµğ¾î Äõ¸® */
-@media screen and (max-width: 800px) {
-	#searchNickName {
-		display: none;
-	}
-}
-
-/* °¡¿îµ¥ Á¤·Ä */
-.margin-auto{
-	margin: 0 auto;
-}
+	src: url('../fonts/sdmisaeng.ttf');
+  }
+   @font-face {
+	font-family: SDSwaggerTTF;
+	src: url('../fonts/SDSwaggerTTF.ttf');
+  }
+  /* body ì˜ì—­ ê¸€ê¼´ ì„¸íŒ… */
+  body{
+	  font-family: sdmisaeng;
+	  font-size: 1.7em;
+  }
+  /* ë§ˆì§„ê°’ 5px */
+  .margin-5{
+	  margin: 5px;
+  }
+  
+  /* í˜ì´ì§€ ë©”ì¸ ì½˜í…ì¸  */
+  .main-row{
+	 border-style: solid;
+	 border-color: #BFBFBF;
+	 padding: 1em;
+	 border-width: thin;
+	 border-radius: 2em;
+	 background-color: #fafafa;
+  }
+  /* ì•„ì´ì½˜ ì´ë¯¸ì§€ */
+  .icon-img{
+	  width: 32px;
+	  height: 32px;
+  }
+  /* ë¡œê³  ê¸€ê¼´ ì„¤ì • */
+  .logo-text{
+	  font-family: makgeolli;
+  }
+  /* ë‹‰ë„¤ì„ ê¸€ì”¨ ì§„í•˜ê²Œ */
+  .nickname {
+	  font-weight:bold;
+	  color: black;
+  }
+  
+  /* ìƒë‹¨ ë©”ë‰´ë°” */
+  .menu-bar{
+	  font-family: makgeolli;
+	  border-bottom-style: solid;
+	  border-bottom-color: #BFBFBF;
+	  border-bottom-width: thin;
+	  background-color: white;
+  }
+  
+  /* ìƒë‹¨ ë©”ë‰´ ìš”ì†Œ*/
+  .menu-bar-items{
+	  margin: 0px 5px 0px 5px; 
+  }
+  
+  /* ê²€ìƒ‰ì°½ ì˜ì—­ ë¯¸ë””ì–´ ì¿¼ë¦¬ */
+  @media screen and (max-width: 800px) {
+	  #searchNickName {
+		  display: none;
+	  }
+  }
+  
+  /* ê°€ìš´ë° ì •ë ¬ */
+  .margin-auto{
+	  margin: 0 auto;
+  }
+  

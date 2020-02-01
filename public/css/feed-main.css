@@ -1,6 +1,6 @@
 /* feed-main */
 
-/* feed ÀÌ¹ÌÁö */
+/* feed ì´ë¯¸ì§€ */
 .feedimg {
 	width: 100%;
 }
@@ -15,23 +15,23 @@
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
-/* feed list Çì´õ */
+/* feed list í—¤ë” */
 .feed-list-header, .feed-list-button, .feed-list-text {
 	margin: 5px;
 }
-/* feed list ´ñ±Û */
+/* feed list ëŒ“ê¸€ */
 .feed-list-reply {
 	margin: 5px 20px 5px 20px;
 }
 
-/* ¶°¹ú¸² Ä£±¸ ¸ñ·Ï Å¸ÀÌÆ² */
+/* ë– ë²Œë¦¼ ì¹œêµ¬ ëª©ë¡ íƒ€ì´í‹€ */
 .feed-friend-title {
 	text-align: center;
 	font-weight: bold;
 	font-size: 40px;
 }
 
-/* feed ¹öÆ° ¸¶Áø Ãß°¡ */
+/* feed ë²„íŠ¼ ë§ˆì§„ ì¶”ê°€ */
 .feed-list-button > i{
 	margin: 0px 5px 0px 5px
 }

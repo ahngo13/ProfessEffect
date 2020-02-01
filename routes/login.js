@@ -20,7 +20,7 @@ router.post('/', (req,res)=>{
                     SELECT * FROM PROFESSDT
                     order by PROFESSDT.PROFESS_NO DESC
                     )R1
-                    LIMIT 10 OFFSET 10`;
+                    LIMIT 10 OFFSET 0`;
                 console.log(sql);
                 con.query(sql, function (err, result, fields) {
                     if (err) {
@@ -32,7 +32,7 @@ router.post('/', (req,res)=>{
                             res.render('feed-main-section', {result});
                         }else{
                             res.render('feed-main-section', {dataYn : '0'});
-                      }
+                        }
                         // res.json({message:message});
                     }
                 });

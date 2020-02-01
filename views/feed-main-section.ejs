@@ -1,10 +1,10 @@
-	<%- include('feed-header'); %>
+	<%- include('feed-header') %>
 					<!-- feed list 영역 -->
 					<input type="hidden" id="page" value="1">
 					<%if(dataYn=='0'){%>
-						떠벌림 리스트가 없습니다.
+						떠벌림 목록이 없습니다.
 					<%}else{%>
-						<%for(let i=0; i<result.length;){%>
+						<%for(let i=0;i<result.length;i++){%>
 						<div class="feed-list">
 							<!-- feed list 헤더 -->
 							<div class="feed-list-header">
@@ -66,6 +66,7 @@
 							<!-- /feed list 바디 -->
 						</div>
 						<!--// feed list 영역 -->
+						<%}%>
 					<%}%>
 				</div>
 			</div>

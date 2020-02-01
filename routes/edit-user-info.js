@@ -14,15 +14,15 @@ router.post('/',(req,res,next)=>{
 
     if(userInfoNickjName == '' || userInfoNickjName==undefined){
         console.log("No Input Nickname");
-        res.json({message:"\'닉네임\'을 수정해주세요.", EditGb:"nickname"});
+        res.json({message:"\'닉네임\'을 입력하세요.", EditGb:"nickname"});
         return;
     }else if(userInfoPw == '' || userInfoPw==undefined){
         console.log("No Input Password");
-        res.json({message:"\'비밀번호\'를 수정해주세요.", EditGb:"password"});
+        res.json({message:"\'새 비밀번호\'를 입력하세요.", EditGb:"password"});
         return;
     }else if(userInfoPwCheck == '' || userInfoPwCheck==undefined){
         console.log("No Input Password");
-        res.json({message:"\'비밀번호 확인\'을 수정해주세요.", EditGb:"passwordcheck"});
+        res.json({message:"\'새 비밀번호 확인\'을 입력하세요.", EditGb:"passwordcheck"});
         return;
     }else if(userInfoPw != userInfoPwCheck){
         console.log("Different Password");
@@ -44,7 +44,7 @@ router.post('/',(req,res,next)=>{
                         res.json({message:"비밀번호 수정 실패"});
                     }else{
                         console.log("1 password UPDATE");
-                        res.json({message:"회원 수정 성공"});
+                        res.json({message:"회원 정보 수정 성공"});
                     }
                 });
             }

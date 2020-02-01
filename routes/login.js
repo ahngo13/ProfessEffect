@@ -29,7 +29,7 @@ router.post('/', (req,res)=>{
                         console.log(result.length);
                         if(result.length > 0){
                             console.log("FEEDLIST SELECT OK");
-                            res.render('feed-main-section', {result});
+                            res.render('feed-main-section', {result, dataYn : '1'});
                         }else{
                             res.render('feed-main-section', {dataYn : '0'});
                         }
@@ -37,10 +37,10 @@ router.post('/', (req,res)=>{
                     }
                 });
             }else{
-                message = "login Fail";
+                message = "아이디나 비밀번호가 일치하지 않습니다.";
                 console.log(message);
+                res.json({message:message, dataYn:'2'});
             }
-            // res.json({message:message});
         }
     });
 

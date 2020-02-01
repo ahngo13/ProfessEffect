@@ -1,4 +1,55 @@
-	<%- include('feed-header') %>
+<!-- navigation bar -->
+<div id="nav-area">
+	<nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top justify-content-center menu-bar">
+	   <a class="navbar-brand menu-bar-items" style="font-size: 50px" href="index.html">Profess Effect</a>
+	   <div class="input-group menu-bar-items" id="searchNickName" style="width: 20%">
+		   <div class="input-group-prepend">
+			   <span class="input-group-text">@</span>
+		   </div>
+		   <input type="text" class="form-control" placeholder="Username">
+	   </div>
+	   <div style="margin: 0px 10px 0px 10px">
+	   <a class="menu-bar-items"onclick="goUserInfo()">
+		   <i class='far fa-user-circle' style='font-size:32px;color:rgb(38, 38, 38);'></i>
+	   </a>
+	   <a class="menu-bar-items" onclick="javascript:goFriendList();">
+		   <i class='fas fa-users' style='font-size:32px;color:rgb(38, 38, 38);'></i>
+	   </a>
+	   <a class="menu-bar-items" onclick="javascript:goProfessWriteForm();">
+		   <i class='fas fa-pen' style='font-size:32px;color:rgb(38, 38, 38);'></i>
+	   </a>
+	   <a class="menu-bar-items" onclick="javascirpt:logout();">
+		   <i class='fas fa-sign-out-alt' style='font-size:32px;color:rgb(38, 38, 38);'></i>
+	   </a>
+	   </div>
+   </nav> 
+</div>
+<!--// navigation bar -->
+   <!-- content area -->
+   <div id="content-area" class="container" style="margin-top: 120px; margin-bottom: 30px;">
+	   <div class="row main-row">
+		   <div class="col-sm-8" style="margin: auto;" id="feed-list">
+			   <div style="width:100%; margin: 0 auto;">
+				   <div style="text-align: center">
+					   <span class="btn-group">
+						 <button type="button" class="btn btn-dark btn-lg">최신순</button>
+						 <button type="button" class="btn btn-dark btn-lg">인기순</button>
+						 <button type="button" class="btn btn-dark btn-lg">랭킹순</button>
+						 <div class="btn-group">
+						   <button type="button" class="btn btn-dark dropdown-toggle btn-lg" data-toggle="dropdown">
+							  카테고리
+						   </button>
+						   <div class="dropdown-menu">
+							   <a class="dropdown-item" href="#">운동</a>
+							   <a class="dropdown-item" href="#">자격증</a>
+							   <a class="dropdown-item" href="#">시험</a>
+							   <a class="dropdown-item" href="#">다이어트</a>
+							   <a class="dropdown-item" href="#">금연/금주</a>
+							   <a class="dropdown-item" href="#">기타</a>
+						   </div>
+						 </div>
+					   </span>						
+				   </div>
 					<!-- feed list 영역 -->
 					<input type="hidden" id="page" value="1">
 					<%if(dataYn=='0'){%>
@@ -9,7 +60,7 @@
 							<!-- feed list 헤더 -->
 							<div class="feed-list-header">
 								<img src="image/icon.png" class=".img-thumbnail icon-img">
-								<span class="nickname">햄릿슈</span>
+								<span class="nickname"><%=result[i].nick_name%></span>
 								<i class='fas fa-ellipsis-h' style='font-size:32px;color:rgb(38, 38, 38);'></i>
 							</div>
 							<!-- //feed list 헤더 -->
@@ -48,12 +99,13 @@
 								<i class='fas fa-heart' style='font-size:32px;color:red'></i>
 								<!-- <i class='far fa-heart' style='font-size:32px;color:red'></i> -->
 								<i class='far fa-comment-dots' style="font-size:32px;color:rgb(38, 38, 38);"></i>
+								좋아요 <%=result[i].good_cnt%>
 							</div>
 							<!--// feed 버튼 영역(좋아요, 댓글) -->
 							
 							<!-- feed 텍스트 영역 -->
 							<div class="feed-list-text">
-								매일 한 시간씩 걸을 거라는 친구의 말에 나는 매일 끼니를 한 끼씩 거르기로 했다.
+								<%=result[i].profess_content%>
 							</div>
 							<!--// feed 텍스트 영역 -->
 							

@@ -26,8 +26,12 @@ $(document).ready(function(){
 		
 		$.post('/login', send_param, function(returnData,status){
 
-            $('#title-area').hide();
-            $('#content-area').html(returnData);
+			if(returnData.dataYn == '2'){
+				$('#login-error-msg').html(returnData.message);
+			}else{
+				$('#title-area').hide();
+				$('#content-area').html(returnData);
+			}
             // location.reload();
             // alert();
 			// if(returnData.resultCode){

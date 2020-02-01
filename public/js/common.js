@@ -17,8 +17,11 @@ function goFriendList(){
 }
 
 function goProfessWriteForm(){
-    $.post('/profess-write-form',{},function(resultData){
-        alert(resultData.message);
+    $.post('/feed',{},function(resultData){
+        $('#nav-area').remove();
+        $('#footer').remove();
+        $('#content-area').css('margin-top', '30px');
+        $('#content-area').html(resultData);
     });
 }
 

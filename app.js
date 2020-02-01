@@ -10,6 +10,7 @@ const logoutRouter = require('./routes/logout');
 const userInfoRouter = require('./routes/user-info');
 const editUserInfoRouter = require('./routes/edit-user-info');
 const basketRouter = require('./routes/basket');
+const feedRouter = require('./routes/feed');
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use('/login', loginRouter);
 app.use('/contact', contactRouter);
 app.use('/basket', basketRouter);
 app.use('/board', boardRouter);
+app.use('/feed', feedRouter);
 
 app.listen(3000,()=>{
     console.log('3000 listen');

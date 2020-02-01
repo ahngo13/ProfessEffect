@@ -64,7 +64,11 @@ function deleteUserInfoBtn(){
     var result = confirm('정말로 탈퇴하겠습니까?');
     if(result) {
         $.post('/delete-user-info', send_param, function(resultData){
-            alert(resultData.message);
+            if(resultData.resultCode == '1'){
+                location.reload();
+            }else{
+                alert(resultData.message);
+            }
         });
     }else{
         alert('탈퇴가 취소되었습니다.');

@@ -35,7 +35,7 @@ router.post('/',(req,res,next)=>{
                         if (result[0]) {
                             res.json({ message: `닉네임이 중복됩니다.`, JoinGb: 'nickname', errYn : '1'});
                         } else {
-                            sql = `INSERT INTO user (user_email, password, user_name, nick_name) VALUES (${con.escape(joinEmail)},${con.escape(joinPw)},${con.escape(joinName)}','${con.escape(joinNickName)}')`;
+                            sql = `INSERT INTO user (user_email, password, user_name, nick_name) VALUES (${con.escape(joinEmail)},${con.escape(joinPw)},${con.escape(joinName)},${con.escape(joinNickName)})`;
                             console.log(sql);
                             con.query(sql, (err, result) =>{
                                 if (err) {

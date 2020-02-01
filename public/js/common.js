@@ -46,7 +46,7 @@ function EditUserInfoBtn(){
             return;
         }else if(resultData.EditGb=='passwordcheck'){
             $('#userInfoPwCheck').focus();
-            return;
+            return; 
         }
     });
     

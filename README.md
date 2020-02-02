@@ -68,7 +68,7 @@ CREATE TABLE `user` (
   `nick_name` varchar(45) NOT NULL,
   `insert_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `use_yn` varchar(2) NOT NULL, DEFAULT '1',
+  `use_yn` varchar(2) NOT NULL DEFAULT '1',
   PRIMARY KEY (`user_email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='회원'
 ~~~

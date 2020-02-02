@@ -66,4 +66,35 @@ router.post('/write', upload.single("imgFile"),(req,res)=>{
 
 });
 
+router.post('/more', (req,res)=>{
+    
+    if(req.session.email){
+            
+            const sql = `SELECT R1.* FROM(
+                SELECT * FROM PROFESSDT
+                order by PROFESSDT.PROFESS_NO DESC
+                )R1
+                LIMIT ${req.body.list} OFFSET ${req.body.start}`;
+            console.log(sql);
+            con.query(sql, function (err, result, fields) {
+                if (err) {
+                    console.log(err);
+                }else{
+                    console.log(result.length);
+                    if(result.length > 0){
+                        console.log("FEEDLIST SELECT OK");
+                        res.render('common/feed-list', {result, dataYn : '1'});
+                    }else{
+                        res.json({list: req.body.list,start:req.body.start,moreYn:'0'});
+                        //res.render('common/feed-list', {dataYn : '0'});
+                    }
+                    // res.json({message:message});
+                }
+            });
+    }else{
+        res.render('index', {});
+    }
+
+});
+
 module.exports = router;

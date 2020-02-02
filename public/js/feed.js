@@ -27,3 +27,37 @@ function feedWrite(){
         // callback(data);
     });
 }
+
+$(function(e){
+    // appendList();
+    
+    $(window).scroll(function(){
+        const dh = $(document).height();
+        const wh = $(window).height();
+        const wt = $(window).scrollTop();
+        if(dh == (wh + wt)){
+            appendList();
+        }
+    });
+});
+
+let start = 10;
+let list = 10;
+
+function appendList(){
+    const send_param = {
+        start,
+        list
+    };
+
+    $.post('/feed/more', send_param, function(resultData){
+        if(resultData){
+            if(resultData.moreYn == '0'){
+
+            }else{
+                $('#feed-list').append(resultData);
+                start += list;
+            }
+        }
+    });
+}

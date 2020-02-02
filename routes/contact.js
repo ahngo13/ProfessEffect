@@ -6,7 +6,6 @@ const con = require('./mysql');
 
 router.post('/',(req,res,next)=>{
     
-    console.log("Connected!");
     const joinEmail = req.body.joinEmail;
     const joinPw= req.body.joinPw;
     const joinName = req.body.joinName;

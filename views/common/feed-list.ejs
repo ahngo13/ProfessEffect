@@ -3,7 +3,7 @@
              떠벌림 목록이 없습니다.
          <%}else{%>
              <%for(let i=0;i<result.length;i++){%>
-             <div class="feed-list">
+             <div class="feed-list" id="feed-list">
                  <!-- feed list 헤더 -->
                  <div class="feed-list-header">
                      <img src="image/icon.png" class=".img-thumbnail icon-img">
@@ -23,8 +23,10 @@
                      <!-- The slideshow -->
                      <!-- <div class="carousel-inner">
                          <div class="carousel-item active"> -->
+                             <%if(result[i].img_path){%>
                              <img class="feedimg" src="./upload/<%=result[i].img_path%>">
-                     <!--	</div>
+                             <%}%>
+                             <!--	</div>
                           <div class="carousel-item">
                              <img class="feedimg" src="./image/feed2.png">
                          </div>

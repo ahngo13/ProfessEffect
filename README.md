@@ -4,6 +4,8 @@
 
 ### 1.git 글로벌 변수 설정
 
+git init
+
 git config --global user.name 이름
 
 ex)

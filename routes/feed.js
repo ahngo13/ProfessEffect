@@ -34,13 +34,21 @@ router.post('/write', upload.single("imgFile"),(req,res)=>{
     
     if(req.session.email){
         const file = req.file
-
+        console.log(file);
 /*         const result = {
             originalName : file.originalname,
             size : file.size,
         } */
-        let sql = `INSERT INTO PROFESSM(PROFESS_TITLE, PROFESS_CONTENT, NICK_NAME, USER_EMAIL, IMG_PATH, CATEGORY_CODE)
-        VALUES (${con.escape(req.body.title)},${con.escape(req.body.content)},${con.escape(req.session.nickName)},${con.escape(req.session.email)},${con.escape(file.filename)},${con.escape(req.body.category)})`;
+       
+        let sql;
+        if(file == undefined){
+            sql = `INSERT INTO PROFESSM(PROFESS_TITLE, PROFESS_CONTENT, NICK_NAME, USER_EMAIL, CATEGORY_CODE)
+            VALUES (${con.escape(req.body.title)},${con.escape(req.body.content)},${con.escape(req.session.nickName)},${con.escape(req.session.email)},${con.escape(req.body.category)})`;
+        }else{
+            sql = `INSERT INTO PROFESSM(PROFESS_TITLE, PROFESS_CONTENT, NICK_NAME, USER_EMAIL, IMG_PATH, CATEGORY_CODE)
+            VALUES (${con.escape(req.body.title)},${con.escape(req.body.content)},${con.escape(req.session.nickName)},${con.escape(req.session.email)},${con.escape(file.filename)},${con.escape(req.body.category)})`;
+        }
+
         console.log(sql);
         con.query(sql, function (err, result, fields) {
             if (err) {

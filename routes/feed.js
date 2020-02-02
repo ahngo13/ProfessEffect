@@ -6,7 +6,7 @@ const con = require('./mysql');
 
 let storage = multer.diskStorage({
     destination: function(req, file ,callback){
-        callback(null, "upload/")
+        callback(null, "public/upload/")
     },
     filename: function(req, file, callback){
         let extension = path.extname(file.originalname);
@@ -16,7 +16,7 @@ let storage = multer.diskStorage({
 });
 
 const upload = multer({
-    dest: "upload/",
+    dest: "public/upload/",
     storage: storage
 });
 

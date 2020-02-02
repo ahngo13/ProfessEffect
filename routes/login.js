@@ -14,6 +14,7 @@ router.post('/', (req,res)=>{
             console.log(result.length);
             if(result.length > 0){
                 req.session.email = req.body.email;
+                req.session.nickName = result[0].nick_name;
                 console.log("LOGIN OK");
                 
                 sql = `SELECT R1.* FROM(

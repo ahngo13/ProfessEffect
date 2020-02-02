@@ -76,19 +76,20 @@ CREATE TABLE `user` (
 ### 떠벌림M
 
 ~~~sql
-CREATE TABLE `professeffect`.`professm` (
-  `profess_no` INT NOT NULL AUTO_INCREMENT,
-  `profess_title` TEXT NOT NULL,
-  `profess_content` TEXT NOT NULL,
-  `nick_name` VARCHAR(45) NOT NULL,
-  `user_email` VARCHAR(320) NOT NULL,
-  `status` VARCHAR(2) NOT NULL DEFAULT 0,
-  `img_path` TEXT NULL,
-  `category_code` VARCHAR(45) NOT NULL,
-  `good_cnt` INT NOT NULL DEFAULT 0,
-  `insert_date` DATETIME NOT NULL DEFAULT now(),
-  `update_date` DATETIME NOT NULL DEFAULT now(),
-  PRIMARY KEY (`profess_no`))
+CREATE TABLE `professm` (
+  `profess_no` int(11) NOT NULL AUTO_INCREMENT,
+  `profess_title` text NOT NULL,
+  `profess_content` text NOT NULL,
+  `nick_name` varchar(45) NOT NULL,
+  `user_email` varchar(320) NOT NULL,
+  `status` varchar(2) NOT NULL DEFAULT '0',
+  `img_path` text,
+  `category_code` varchar(45) NOT NULL,
+  `good_cnt` int(11) NOT NULL DEFAULT '0',
+  `insert_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`profess_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4
 ~~~
 
 
@@ -96,16 +97,19 @@ CREATE TABLE `professeffect`.`professm` (
 ### 떠벌림DT
 
 ~~~sql
-CREATE TABLE `professeffect`.`professdt` (
-  `profess_no` INT NOT NULL AUTO_INCREMENT,
-  `profess_title` TEXT NOT NULL,
-  `profess_content` TEXT NOT NULL,
-  `nick_name` VARCHAR(45) NOT NULL,
-  `good_cnt` INT NOT NULL DEFAULT 0,
-  `img_path` TEXT NULL,
-  `insert_date` DATETIME NOT NULL DEFAULT now(),
-  `update_date` DATETIME NOT NULL DEFAULT now(),
-  PRIMARY KEY (`profess_no`))
+CREATE TABLE `professdt` (
+  `profess_no` int(11) NOT NULL,
+  `professdt_no` int(11) NOT NULL,
+  `user_email` varchar(320) NOT NULL,
+  `profess_title` text NOT NULL,
+  `profess_content` text NOT NULL,
+  `nick_name` varchar(45) NOT NULL,
+  `good_cnt` int(11) NOT NULL DEFAULT '0',
+  `img_path` text,
+  `insert_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`profess_no`,`professdt_no`,`user_email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 ~~~
 
 ### 떠벌림 카테고리
@@ -117,4 +121,14 @@ CREATE TABLE `category` (
   `use_yn` varchar(2) NOT NULL DEFAULT '1',
   PRIMARY KEY (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
+~~~
+
+### 떠벌림M INSERT 트리거
+
+~~~sql
+CREATE TRIGGER `professeffect`.`professm_AFTER_INSERT` AFTER INSERT ON `professm` FOR EACH ROW
+BEGIN
+	INSERT INTO PROFESSDT(PROFESS_NO, PROFESSDT_NO, USER_EMAIL, PROFESS_TITLE, PROFESS_CONTENT, NICK_NAME, IMG_PATH)
+	VALUES (NEW.PROFESS_NO,1,NEW.USER_EMAIL,NEW.PROFESS_TITLE,NEW.PROFESS_CONTENT,NEW.NICK_NAME,NEW.IMG_PATH);
+END
 ~~~

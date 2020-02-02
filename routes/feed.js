@@ -11,7 +11,7 @@ let storage = multer.diskStorage({
     filename: function(req, file, callback){
         let extension = path.extname(file.originalname);
         let basename = path.basename(file.originalname, extension);
-        callback(null, basename + "-" + Date.now() + extension);
+        callback(null, Date.now() + extension);
     }
 });
 
@@ -35,12 +35,22 @@ router.post('/write', upload.single("imgFile"),(req,res)=>{
     if(req.session.email){
         const file = req.file
 
-        const result = {
+/*         const result = {
             originalName : file.originalname,
             size : file.size,
-        }
-
-        res.json(result);
+        } */
+        let sql = `INSERT INTO PROFESSM(PROFESS_TITLE, PROFESS_CONTENT, NICK_NAME, USER_EMAIL, IMG_PATH, CATEGORY_CODE)
+        VALUES (${con.escape(req.body.title)},${con.escape(req.body.content)},${con.escape(req.session.nickName)},${con.escape(req.session.email)},${con.escape(file.filename)},${con.escape(req.body.category)})`;
+        console.log(sql);
+        con.query(sql, function (err, result, fields) {
+            if (err) {
+                console.log(err);
+                res.json({resultCode:"500"});
+            }else{
+                console.log("processm 1 record inserted");
+                res.json({resultCode:"200"});
+            }
+        });
 
     }else{
         res.render('index', {});

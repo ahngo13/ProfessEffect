@@ -61,3 +61,18 @@ function appendList(){
         }
     });
 }
+
+function replyWrite(professNo, professDtNo){
+
+    send_param = {professNo, professDtNo};
+       
+    $.post('/reply/write', send_param, function(returnData,status){
+
+/*         if(returnData.dataYn == '2'){
+            $('#login-error-msg').html(returnData.message);
+        }else{
+            $('#title-area').hide();
+            $('#content-area').html(returnData);
+        } */
+    });
+}

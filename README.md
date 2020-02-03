@@ -134,3 +134,62 @@ BEGIN
 	VALUES (NEW.PROFESS_NO,1,NEW.USER_EMAIL,NEW.PROFESS_TITLE,NEW.PROFESS_CONTENT,NEW.NICK_NAME,NEW.IMG_PATH);
 END
 ~~~
+
+### 좋아요 테이블
+
+~~~sql
+CREATE TABLE `good` (
+  `professdt_no` int(11) NOT NULL,
+  `user_email` varchar(320) NOT NULL,
+  `good_yn` varchar(45) NOT NULL DEFAULT '1',
+  `insert_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`professdt_no`,`user_email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='좋아요'
+~~~
+
+### 댓글 테이블
+
+~~~sql
+CREATE TABLE `reply` (
+  `reply_no` int(11) NOT NULL AUTO_INCREMENT,
+  `reply_content` varchar(200) NOT NULL,
+  `profess_no` int(11) NOT NULL,
+  `professdt_no` int(11) NOT NULL,
+  `user_email` varchar(320) NOT NULL,
+  `nick_name` varchar(45) NOT NULL,
+  `insert_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`reply_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='댓글'
+~~~
+
+
+~~~
+                 <!-- feed 버튼 영역(좋아요, 댓글) -->
+                 <div class="feed-list-button">
+                     <i class='fas fa-heart' onclick="javascript:pushGood();" style='font-size:32px;color:red'></i>
+                     <!-- <i class='far fa-heart' style='font-size:32px;color:red'></i> -->
+                     <i class='far fa-comment-dots' style="font-size:32px;color:rgb(38, 38, 38);"></i>
+                     좋아요 <%=result[i].good_cnt%>
+                 </div>
+                 <!--// feed 버튼 영역(좋아요, 댓글) -->
+                 
+                 <!-- feed 텍스트 영역 -->
+                 <div class="feed-list-text">
+                     <%=result[i].profess_content%>
+                 </div>
+                 <!--// feed 텍스트 영역 -->
+                 <!--feed 댓글 입력 영역-->
+                 <div><input type="text" class="form-control"><button onclick="replyWrite('<%=result.profess_no%>','<%=result.professdt_no%>');">게시</button></div>
+                 <!--feed 댓글 입력 영역-->
+                 <%for(let y=0; y<resultReply[y].legnth;y++){%>
+                    <%if((result[i].profess_no == resultReply[y].profess_no) && (result[i].professdt_no == resultReply[y].professdt_no)){%>
+                    <!-- feed 댓글 영역 -->
+                    <div class="feed-list-reply">
+                        <div><span class="nickname"><%=resultReply[y].nick_name%></span> : <%=resultReply[y].reply_content%></div>
+                    </div>
+                    <%}%>
+                 <%}%>
+                 <!--// feed 댓글 영역 -->
+~~~

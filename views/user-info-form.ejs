@@ -30,11 +30,11 @@
     <div class="margin-auto text-center">
         <div class="form-group">
             <div><h1>회원 정보 수정</h1></div>
-            <input type="email" readonly class="form-control margin-5" id="userInfoEmail"	value="<%= result[0].user_email %>">
+            <input type="email" readonly class="form-control margin-5" id="userInfoEmail" value="<%= result[0].user_email %>">
             <input type="text" readonly class="form-control margin-5" id="userInfoName" value="<%= result[0].user_name %>">
-            <input type="text" class="form-control margin-5" id="userInfoNickjName" placeholder="닉네임">
-            <input type="password" class="form-control margin-5" id="userInfoPw" placeholder="새 비밀번호"></input> 
-            <input type="password" class="form-control margin-5" id="userInfoPwCheck" placeholder="새 비밀번호확인"></input> 
+            <input type="text" class="form-control margin-5" id="userInfoNickjName" maxlength="20" placeholder="닉네임">
+            <input type="password" class="form-control margin-5" id="userInfoPw" maxlength="20" placeholder="새 비밀번호"></input> 
+            <input type="password" class="form-control margin-5" id="userInfoPwCheck" maxlength="20" placeholder="새 비밀번호확인"></input> 
             <input type="button" class="btn btn-primary btn-block margin-5" onclick="javascirpt:EditUserInfoBtn();" value="수정하기"></input>
             <input type="button" class="btn btn-danger btn-block margin-5" onclick="javascirpt:deleteUserInfoBtn();" value="탈퇴하기"></input>
         </div>

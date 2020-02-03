@@ -35,3 +35,14 @@
 .feed-list-button > i{
 	margin: 0px 5px 0px 5px
 }
+
+/*modal 텍스트 가운데 정렬*/
+.modal-text{
+	text-align: center;
+}
+
+/*친구 목록 텍스트 가운데 정렬*/
+.friend-list-text{
+	text-align: center;
+	padding-right: 32px;
+}

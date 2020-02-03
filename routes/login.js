@@ -30,7 +30,7 @@ router.post('/', (req,res)=>{
                         console.log(result.length);
                         if(result.length > 0){
                             console.log("FEEDLIST SELECT OK");
-                            res.render('feed-main-section', {result, dataYn : '1'});
+                            res.render('feed-main-section', {result, dataYn : '1', loginEmail : req.session.email});
                         }else{
                             res.render('feed-main-section', {dataYn : '0'});
                         }

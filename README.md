@@ -139,12 +139,14 @@ END
 
 ~~~sql
 CREATE TABLE `good` (
+  `good_no` int(11) NOT NULL AUTO_INCREMENT,
+  `profess_no` int(11) NOT NULL,
   `professdt_no` int(11) NOT NULL,
   `user_email` varchar(320) NOT NULL,
   `good_yn` varchar(45) NOT NULL DEFAULT '1',
   `insert_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`professdt_no`,`user_email`)
+  PRIMARY KEY (`good_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='좋아요'
 ~~~
 

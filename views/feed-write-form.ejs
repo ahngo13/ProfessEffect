@@ -2,7 +2,9 @@
 <div class="col-sm-12">
     <div class="margin-auto text-center">
         <div class="form-group">
-            <h1>새로운 떠벌림</h1>
+            <%if(insertYn == '1'){%>
+                <h1>새로운 떠벌림</h1>
+
             <select id="professCategory" class="custom-select form-control margin-5">
                 <option selected>카테고리</option>
                 <option value="1">운동</option>
@@ -12,16 +14,36 @@
                 <option value="5">금연/금주</option>
                 <option value="6">기타</option>
             </select>
-            <input type="text" class="form-control margin-5" id="professTitle" placeholder="떠벌림 제목" value="">
+            <input type="text" class="form-control margin-5" id="professTitle" placeholder="떠벌림 제목">
             <textarea class="form-control margin-5" rows="5" id="professContent" placeholder="떠벌림 내용"></textarea>
             <div class="custom-file margin-5">
                 <input type="file" class="custom-file-input" id="imgFile">
-                <label class="custom-file-label" for="imgFile">이미지 올리기</label>
+                <label class="custom-file-label" for="imgFile">이미지 업로드</label>
             </div>
-            <div id="feed-write-error-msg"></div>
-            <input type="button" class="btn btn-primary btn-block margin-5" onclick="feedWrite()" value="게시하기"></input>
+            <div class="feed-write-error-msg"></div>
+                <input type="button" class="btn btn-primary btn-block margin-5" onclick="feedWrite()" value="게시하기"></input>
+            <%}else{%>
+                <h1>떠벌림 수정</h1>
+            <select id="professCategory" class="custom-select form-control margin-5">
+                <option>카테고리</option>
+                <option value="1" <%if(result[0].CATEGORY_CODE == '1'){%>selected<%}%>>운동</option>
+                <option value="2" <%if(result[0].CATEGORY_CODE == '2'){%>selected<%}%>>자격증</option>
+                <option value="3" <%if(result[0].CATEGORY_CODE == '3'){%>selected<%}%>>시험</option>
+                <option value="4" <%if(result[0].CATEGORY_CODE == '4'){%>selected<%}%>> 다이어트</option>
+                <option value="5" <%if(result[0].CATEGORY_CODE == '5'){%>selected<%}%>>금연/금주</option>
+                <option value="6" <%if(result[0].CATEGORY_CODE == '6'){%>selected<%}%>>기타</option>
+            </select>
+            <input type="text" class="form-control margin-5" id="professTitle" placeholder="떠벌림 제목" value="<%=result[0].profess_title%>">
+            <textarea class="form-control margin-5" rows="5" id="professContent" placeholder="떠벌림 내용"><%=result[0].profess_content%></textarea>
+            <div class="custom-file margin-5">
+                <input type="file" class="custom-file-input" id="imgFile" value="<%=result[0].img_path%>">
+                <label class="custom-file-label" for="imgFile">이미지 업로드</label>
+            </div>
+            <div style="color: red;">※이미지 업로드가 없을 경우 기존 이미지로 저장됩니다.</div>
+            <div class="feed-write-error-msg"></div>
+                <input type="button" class="btn btn-primary btn-block margin-5" onclick="feedUpdate('<%=result[0].profess_no%>','<%=result[0].professdt_no%>')" value="저장하기"></input>
+            <%}%>
         </div>
-
     </div>
 </div>
 <script>

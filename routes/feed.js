@@ -23,8 +23,27 @@ const upload = multer({
 router.post('/', (req,res)=>{
     
     if(req.session.email){
-        logind=1;
-        res.render('feed-write-form', {});
+        if(req.body.professNo != undefined && req.body.professDtNo != undefined){
+            console.log('professNo');
+            const sql = `SELECT PROFESSDT.*,CATEGORY_CODE FROM PROFESSDT INNER JOIN PROFESSM ON PROFESSDT.PROFESS_NO=PROFESSM.PROFESS_NO WHERE PROFESSDT.PROFESS_NO=${con.escape(req.body.professNo)} AND PROFESSDT.PROFESSDT_NO=${con.escape(req.body.professDtNo)}`;
+            console.log(sql);
+            con.query(sql, function (err, result, fields) {
+                if (err) {
+                    console.log(err);
+                }else{
+                    console.log(result.length);
+                    if(result.length > 0){
+                        console.log("FEEDFORM DATA SELECT OK");
+                        res.render('feed-write-form', {insertYn:'0', result});
+                    }else{
+                        res.json({resultCode : "500"});
+                    }
+                }
+            });
+
+        }else{
+            res.render('feed-write-form', {insertYn:'1'});
+        }
     }else{
         res.render('index', {});
     }
@@ -66,6 +85,91 @@ router.post('/write', upload.single("imgFile"),(req,res)=>{
 
 });
 
+router.post('/update', upload.single("imgFile"),(req,res)=>{
+    
+    if(req.session.email){
+        const file = req.file
+        console.log(file);
+       
+        let sql;
+        if(file == undefined){
+            if(req.body.imgPath){
+                //PROFESS 2번째 ROW부터는 카테고리 수정이 불가능하도록 처리 필요
+                sql = `UPDATE PROFESSDT SET PROFESS_TITLE=${con.escape(req.body.title)} , PROFESS_CONTENT=${con.escape(req.body.content)}, IMG_PATH=${con.escape(req.body.imgPath)},UPDATE_DATE=NOW() WHERE PROFESS_NO=${con.escape(req.body.professNo)} AND PROFESSDT_NO=${con.escape(req.body.professDtNo)};`;
+            }else{
+                sql = `UPDATE PROFESSDT SET PROFESS_TITLE=${con.escape(req.body.title)} , PROFESS_CONTENT=${con.escape(req.body.content)}, UPDATE_DATE=NOW() WHERE PROFESS_NO=${con.escape(req.body.professNo)} AND PROFESSDT_NO=${con.escape(req.body.professDtNo)};`;
+            }
+        }else{
+            sql = `UPDATE PROFESSDT SET PROFESS_TITLE=${con.escape(req.body.title)} , PROFESS_CONTENT=${con.escape(req.body.content)}, IMG_PATH=${con.escape(file.filename)},`;
+        }
+
+        console.log(sql);
+        con.query(sql, function (err, result, fields) {
+            if (err) {
+                console.log(err);
+                res.json({resultCode:"500"});
+            }else{
+                if(file == undefined){
+                    if(req.body.imgPath){
+                        sql = `UPDATE PROFESSM SET PROFESS_TITLE=${con.escape(req.body.title)}, PROFESS_CONTENT=${con.escape(req.body.content)}, IMG_PATH=${con.escape(req.body.imgPath)}, CATEGORY_CODE=${con.escape(req.body.category)}, UPDATE_DATE=NOW() WHERE PROFESS_NO=${con.escape(req.body.professNo)}`;
+                    }else{
+                        sql = `UPDATE PROFESSM SET PROFESS_TITLE=${con.escape(req.body.title)}, PROFESS_CONTENT=${con.escape(req.body.content)}, CATEGORY_CODE=${con.escape(req.body.category)}, UPDATE_DATE=NOW() WHERE PROFESS_NO=${con.escape(req.body.professNo)}`;
+                    }
+                }else{
+                    sql = `UPDATE PROFESSM SET PROFESS_TITLE=${con.escape(req.body.title)}, PROFESS_CONTENT=${con.escape(req.body.content)}, IMG_PATH=${con.escape(file.filename)}, CATEGORY_CODE=${con.escape(req.body.category)}, UPDATE_DATE=NOW() WHERE PROFESS_NO=${con.escape(req.body.professNo)}`;
+                }
+                con.query(sql, function (err, result, fields) {
+                    if (err) {
+                        console.log(err);
+                        res.json({resultCode:"500"});
+                    }else{
+                        console.log("processm, processdt 1 record update");
+                        res.json({resultCode:"200"});
+                    }
+                });
+            }
+        });
+
+    }else{
+        res.render('index', {});
+    }
+
+});
+
+router.post('/delete', (req,res)=>{
+    
+    if(req.session.email){
+       
+        let sql = `DELETE FROM PROFESSDT WHERE PROFESS_NO=${con.escape(req.body.professNo)} AND PROFESSDT_NO=${con.escape(req.body.professDtNo)}`;
+        console.log(sql);
+        con.query(sql, function (err, result, fields) {
+            if (err) {
+                console.log(err);
+                res.json({resultCode:"500"});
+            }else{
+                console.log("processdt 1 record delete");
+                sql = `DELETE FROM PROFESSM WHERE PROFESS_NO=${con.escape(req.body.professNo)}`;
+                console.log(sql);
+                if(req.body.professDtNo == '1'){
+                    con.query(sql, function (err, result, fields) {
+                        if (err) {
+                            console.log(err);
+                            res.json({resultCode:"500"});
+                        }else{
+                            console.log("processm record delete");
+                            res.json({resultCode:"200"});
+                        }
+                    });
+                }
+            }
+        });
+
+    }else{
+        res.render('index', {});
+    }
+
+});
+
 router.post('/more', (req,res)=>{
     
     if(req.session.email){
@@ -83,7 +187,7 @@ router.post('/more', (req,res)=>{
                     console.log(result.length);
                     if(result.length > 0){
                         console.log("FEEDLIST SELECT OK");
-                        res.render('common/feed-list', {result, dataYn : '1'});
+                        res.render('common/feed-list', {result, dataYn : '1', loginEmail : req.session.email});
                     }else{
                         res.json({list: req.body.list,start:req.body.start,moreYn:'0'});
                         //res.render('common/feed-list', {dataYn : '0'});
@@ -92,7 +196,7 @@ router.post('/more', (req,res)=>{
                 }
             });
     }else{
-        res.render('index', {});
+        res.json({logind:'0'});
     }
 
 });

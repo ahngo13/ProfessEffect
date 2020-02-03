@@ -10,6 +10,7 @@ const userInfoRouter = require('./routes/user-info');
 const editUserInfoRouter = require('./routes/edit-user-info');
 const deleteUserInfoRouter = require('./routes/delete-user-info');
 const feedRouter = require('./routes/feed');
+const pushGoodRouter = require('./routes/push-good');
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use('/logout', logoutRouter);
 app.use('/login', loginRouter);
 app.use('/contact', contactRouter);
 app.use('/feed', feedRouter);
+app.use('/push-good', pushGoodRouter);
 
 app.listen(3000,()=>{
     console.log('3000 listen');

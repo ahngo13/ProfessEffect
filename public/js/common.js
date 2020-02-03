@@ -28,6 +28,17 @@ function goProfessWriteForm(){
     });
 }
 
+function pushGood(){
+    //alert("Test");
+    //const userInfoEmail = $('#req.session.email').val();
+    //alert(req.session.email);
+ //   const send_param = {userInfoEmail};
+    $.post('/push-good',{},function(resultData){
+        alert(resultData.message);
+        //location.reload();
+    });
+}
+
 function EditUserInfoBtn(){
 
     const userInfoEmail = $('#userInfoEmail').val();

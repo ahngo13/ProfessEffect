@@ -6,7 +6,7 @@
                 <h1>새로운 떠벌림</h1>
 
             <select id="professCategory" class="custom-select form-control margin-5">
-                <option selected>카테고리</option>
+                <option selected value="0">카테고리</option>
                 <option value="1">운동</option>
                 <option value="2">자격증</option>
                 <option value="3">시험</option>
@@ -20,16 +20,16 @@
                 <input type="file" class="custom-file-input" id="imgFile">
                 <label class="custom-file-label" for="imgFile">이미지 업로드</label>
             </div>
-            <div class="feed-write-error-msg"></div>
+            <div id="feed-write-error-msg" style="color: red;"></div>
                 <input type="button" class="btn btn-primary btn-block margin-5" onclick="feedWrite()" value="게시하기"></input>
             <%}else{%>
                 <h1>떠벌림 수정</h1>
             <select id="professCategory" class="custom-select form-control margin-5">
-                <option>카테고리</option>
+                <option value="0">카테고리</option>
                 <option value="1" <%if(result[0].CATEGORY_CODE == '1'){%>selected<%}%>>운동</option>
                 <option value="2" <%if(result[0].CATEGORY_CODE == '2'){%>selected<%}%>>자격증</option>
                 <option value="3" <%if(result[0].CATEGORY_CODE == '3'){%>selected<%}%>>시험</option>
-                <option value="4" <%if(result[0].CATEGORY_CODE == '4'){%>selected<%}%>> 다이어트</option>
+                <option value="4" <%if(result[0].CATEGORY_CODE == '4'){%>selected<%}%>>다이어트</option>
                 <option value="5" <%if(result[0].CATEGORY_CODE == '5'){%>selected<%}%>>금연/금주</option>
                 <option value="6" <%if(result[0].CATEGORY_CODE == '6'){%>selected<%}%>>기타</option>
             </select>
@@ -40,7 +40,7 @@
                 <label class="custom-file-label" for="imgFile">이미지 업로드</label>
             </div>
             <div style="color: red;">※이미지 업로드가 없을 경우 기존 이미지로 저장됩니다.</div>
-            <div class="feed-write-error-msg"></div>
+            <div id="feed-write-error-msg" style="color: red;"></div>
                 <input type="button" class="btn btn-primary btn-block margin-5" onclick="feedUpdate('<%=result[0].profess_no%>','<%=result[0].professdt_no%>')" value="저장하기"></input>
             <%}%>
         </div>

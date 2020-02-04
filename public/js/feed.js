@@ -4,6 +4,8 @@ function feedWrite(){
     const professTitle = $('#professTitle').val();
     const professContent = $('#professContent').val();
     const imgFile = $('#imgFile')[0].files[0];
+    const imgName = $('#imgFile')[0].defaultValue;
+    const imgExp = /([^\s]+(?=\.(jpg|gif|png))\.\2)/;
     const formData = new FormData();
 
     let errMsg = '';
@@ -24,7 +26,7 @@ function feedWrite(){
         $('#professContent').focus();
         return;
     }else if(imgFile != undefined){ 
-        if(imgName.match(imgExp) == null){
+        if(imgName.match(imgExp) == null && imgName != ''){
             errMsg = "jpg, gif, png 형식의 이미지 파일만 첨부 가능합니다.";
             $('#feed-write-error-msg').html(errMsg);
             return;
@@ -102,7 +104,7 @@ function feedUpdate(professNo, professDtNo){
         $('#professContent').focus();
         return;
     }else if(imgFile != undefined){ 
-        if(imgName.match(imgExp) == null){
+        if(imgName.match(imgExp) == null && imgName != ''){
             errMsg = "jpg, gif, png 형식의 이미지 파일만 첨부 가능합니다.";
             $('#feed-write-error-msg').html(errMsg);
             return;
@@ -137,7 +139,7 @@ function feedUpdate(professNo, professDtNo){
     });
 }
 
-function deleteFeed(professNo, professDtNo){
+function deleteFeed(num, professNo, professDtNo){
 
     const send_param = {professNo, professDtNo};
        
@@ -152,8 +154,6 @@ function deleteFeed(professNo, professDtNo){
 }
 
 $(function(e){
-    // appendList();
-    
     $(window).scroll(function(){
         const dh = $(document).height();
         const wh = $(window).height();

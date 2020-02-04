@@ -28,13 +28,20 @@ function goProfessWriteForm(){
     });
 }
 
-function pushGood(){
+function pushGood(professNo, professDtNo){
     //alert("Test");
     //const userInfoEmail = $('#req.session.email').val();
     //alert(req.session.email);
  //   const send_param = {userInfoEmail};
-    $.post('/push-good',{},function(resultData){
+    const send_param = {professNo, professDtNo};
+    $.post('/push-good',send_param,function(resultData){
         alert(resultData.message);
+        if(resultData.heartColor==1){
+            $("#heartGood").css("style", "red");
+        }else{
+            $("#heartGood").css("style", "black");
+        }
+        
         //location.reload();
     });
 }

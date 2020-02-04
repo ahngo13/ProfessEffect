@@ -80,7 +80,7 @@
                  
                  <!-- feed 버튼 영역(좋아요, 댓글) -->
                   <div class="feed-list-button">
-                     <i class='fas fa-heart' onclick="javascript:pushGood();" style='font-size:32px;color:red'></i>
+                     <i class='fas fa-heart' onclick="javascript:pushGood('<%=result[i].profess_no%>','<%=result[i].professdt_no%>');" style='font-size:32px;color:red'></i>
                      <!-- <i class='far fa-heart' style='font-size:32px;color:red'></i> -->
                       <i class='far fa-comment-dots' style="font-size:32px;color:rgb(38, 38, 38);"></i>
                      좋아요 <%=result[i].good_cnt%>

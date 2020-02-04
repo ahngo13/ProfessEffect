@@ -6,6 +6,25 @@ function feedWrite(){
     const imgFile = $('#imgFile')[0].files[0];
     const formData = new FormData();
 
+    let errMsg = '';
+    
+    if(professCategory == '0' || professCategory==undefined || professCategory==''){
+        errMsg = "카테고리를 선택 해주세요.";
+        $('#feed-write-error-msg').html(errMsg);
+        $('#professCategory').focus();
+        return;
+    }else if(professTitle == '' || professTitle==undefined){
+        errMsg = "떠벌림 제목을 입력해주세요.";
+        $('#feed-write-error-msg').html(errMsg);
+        $('#professTitle').focus();
+        return;
+    }else if(professContent == '' || professContent==undefined){
+        errMsg = "떠벌림 내용을 입력해주세요.";
+        $('#feed-write-error-msg').html(errMsg);
+        $('#professContent').focus();
+        return;
+    }
+
     formData.append('category', professCategory);
     formData.append('title', professTitle);
     formData.append('content', professContent);
@@ -57,6 +76,23 @@ function feedUpdate(professNo, professDtNo){
     const professContent = $('#professContent').val();
     const imgFile = $('#imgFile')[0].files[0];
     const formData = new FormData();
+
+    if(professCategory == '0' || professCategory==undefined || professCategory==''){
+        errMsg = "카테고리를 선택 해주세요.";
+        $('#feed-write-error-msg').html(errMsg);
+        $('#professCategory').focus();
+        return;
+    }else if(professTitle == '' || professTitle==undefined){
+        errMsg = "떠벌림 제목을 입력해주세요.";
+        $('feed-write-error-msg').html(errMsg);
+        $('#professTitle').focus();
+        return;
+    }else if(professContent == '' || professContent==undefined){
+        errMsg = "떠벌림 내용을 입력해주세요.";
+        $('#feed-write-error-msg').html(errMsg);
+        $('#professContent').focus();
+        return;
+    }
 
     formData.append('professNo', professNo);
     formData.append('professDtNo', professDtNo);

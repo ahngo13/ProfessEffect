@@ -6,7 +6,7 @@ $(document).ready(function(){
 		const loginEmail = $('#loginEmail').val();
 		const loginPw= $('#loginPw').val();
 		let errMsg = '';
-		
+
 		if(loginEmail == '' || loginEmail==undefined){
 			errMsg = "이메일 주소를 입력해주세요.";
 			$('#login-error-msg').html(errMsg);

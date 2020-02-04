@@ -23,6 +23,12 @@ function feedWrite(){
         $('#feed-write-error-msg').html(errMsg);
         $('#professContent').focus();
         return;
+    }else if(imgFile != undefined){ 
+        if(imgName.match(imgExp) == null){
+            errMsg = "jpg, gif, png 형식의 이미지 파일만 첨부 가능합니다.";
+            $('#feed-write-error-msg').html(errMsg);
+            return;
+        }
     }
 
     formData.append('category', professCategory);
@@ -47,11 +53,11 @@ function feedWrite(){
     });
 }
 
-function goUpdateFeedForm(professNo, professDtNo){
+function goUpdateFeedForm(num, professNo, professDtNo){
 
-    $("#myModal").modal("hide");
+    $("#myModal"+num).modal("hide");
 
-    const send_param = {professNo, professDtNo};
+    const send_param = {num, professNo, professDtNo};
 
     $.post('/feed',send_param,function(resultData){
 
@@ -75,6 +81,9 @@ function feedUpdate(professNo, professDtNo){
     const professTitle = $('#professTitle').val();
     const professContent = $('#professContent').val();
     const imgFile = $('#imgFile')[0].files[0];
+    const imgName = $('#imgFile')[0].defaultValue;
+    const imgExp = /([^\s]+(?=\.(jpg|gif|png))\.\2)/;
+
     const formData = new FormData();
 
     if(professCategory == '0' || professCategory==undefined || professCategory==''){
@@ -92,6 +101,12 @@ function feedUpdate(professNo, professDtNo){
         $('#feed-write-error-msg').html(errMsg);
         $('#professContent').focus();
         return;
+    }else if(imgFile != undefined){ 
+        if(imgName.match(imgExp) == null){
+            errMsg = "jpg, gif, png 형식의 이미지 파일만 첨부 가능합니다.";
+            $('#feed-write-error-msg').html(errMsg);
+            return;
+        }
     }
 
     formData.append('professNo', professNo);
@@ -160,7 +175,7 @@ function appendList(){
 
     $.post('/feed/more', send_param, function(resultData){
         if(resultData){
-            if(logind == '0'){
+            if(resultData.logind == '0'){
                 location.reload();
             }else{
                 if(resultData.moreYn == '0'){
@@ -186,5 +201,26 @@ function replyWrite(professNo, professDtNo){
             $('#title-area').hide();
             $('#content-area').html(returnData);
         } */
+    });
+}
+
+function selectFeed(selectGb){
+
+    let category;
+    if(selectGb){
+        if(selectGb != 'recently' && selectGb != 'popular'){
+            category = selectGb;
+            selectGb = 'category';
+        }
+    }
+    const send_param = {selectGb, category};
+
+    $.post('/feed/select', send_param, function(resultData){
+        if(resultData.dataYn == '0'){
+            location.reload();
+        }else{
+            $('#title-area').hide();
+            $('#content-area').html(resultData);
+        }
     });
 }

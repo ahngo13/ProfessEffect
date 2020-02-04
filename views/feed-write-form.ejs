@@ -14,8 +14,8 @@
                 <option value="5">금연/금주</option>
                 <option value="6">기타</option>
             </select>
-            <input type="text" class="form-control margin-5" id="professTitle" placeholder="떠벌림 제목">
-            <textarea class="form-control margin-5" rows="5" id="professContent" placeholder="떠벌림 내용"></textarea>
+            <input type="text" class="form-control margin-5" id="professTitle" placeholder="떠벌림 제목" maxlength="100">
+            <textarea class="form-control margin-5" rows="5" id="professContent" placeholder="떠벌림 내용" maxlength="500"></textarea>
             <div class="custom-file margin-5">
                 <input type="file" class="custom-file-input" id="imgFile">
                 <label class="custom-file-label" for="imgFile">이미지 업로드</label>
@@ -33,8 +33,8 @@
                 <option value="5" <%if(result[0].CATEGORY_CODE == '5'){%>selected<%}%>>금연/금주</option>
                 <option value="6" <%if(result[0].CATEGORY_CODE == '6'){%>selected<%}%>>기타</option>
             </select>
-            <input type="text" class="form-control margin-5" id="professTitle" placeholder="떠벌림 제목" value="<%=result[0].profess_title%>">
-            <textarea class="form-control margin-5" rows="5" id="professContent" placeholder="떠벌림 내용"><%=result[0].profess_content%></textarea>
+            <input type="text" class="form-control margin-5" id="professTitle" placeholder="떠벌림 제목" value="<%=result[0].profess_title%>" maxlength="100">
+            <textarea class="form-control margin-5" rows="5" id="professContent" placeholder="떠벌림 내용" maxlength="500"><%=result[0].profess_content%></textarea>
             <div class="custom-file margin-5">
                 <input type="file" class="custom-file-input" id="imgFile" value="<%=result[0].img_path%>">
                 <label class="custom-file-label" for="imgFile">이미지 업로드</label>

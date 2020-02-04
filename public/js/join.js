@@ -7,12 +7,18 @@ $(document).ready(function(){
 		const joinPw= $('#joinPw').val();
 		const joinName= $('#joinName').val();
 		const joinNickName= $('#joinNickName').val();
+		const regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		
 		let errMsg = '';
 		
 		if(joinEmail == '' || joinEmail==undefined){
 			errMsg = "이메일 주소를 입력해주세요.";
 			$('#join-error-msg').html(errMsg);
+			$('#joinEmail').focus();
+			return;
+		}else if(joinEmail.match(regExp) == null || joinEmail.match(regExp) == undefined){
+			errMsg = "이메일 형식에 맞게 입력해주세요.";
+			$('#login-error-msg').html(errMsg);
 			$('#joinEmail').focus();
 			return;
 		}else if(joinName == '' || joinName==undefined){

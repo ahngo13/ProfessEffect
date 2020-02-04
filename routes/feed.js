@@ -97,10 +97,10 @@ router.post('/update', upload.single("imgFile"),(req,res)=>{
                 //PROFESS 2번째 ROW부터는 카테고리 수정이 불가능하도록 처리 필요
                 sql = `UPDATE PROFESSDT SET PROFESS_TITLE=${con.escape(req.body.title)} , PROFESS_CONTENT=${con.escape(req.body.content)}, IMG_PATH=${con.escape(req.body.imgPath)},UPDATE_DATE=NOW() WHERE PROFESS_NO=${con.escape(req.body.professNo)} AND PROFESSDT_NO=${con.escape(req.body.professDtNo)};`;
             }else{
-                sql = `UPDATE PROFESSDT SET PROFESS_TITLE=${con.escape(req.body.title)} , PROFESS_CONTENT=${con.escape(req.body.content)}, UPDATE_DATE=NOW() WHERE PROFESS_NO=${con.escape(req.body.professNo)} AND PROFESSDT_NO=${con.escape(req.body.professDtNo)};`;
+                sql = `UPDATE PROFESSDT SET PROFESS_TITLE=${con.escape(req.body.title)} , PROFESS_CONTENT=${con.escape(req.body.content)},UPDATE_DATE=NOW() WHERE PROFESS_NO=${con.escape(req.body.professNo)} AND PROFESSDT_NO=${con.escape(req.body.professDtNo)};`;
             }
         }else{
-            sql = `UPDATE PROFESSDT SET PROFESS_TITLE=${con.escape(req.body.title)} , PROFESS_CONTENT=${con.escape(req.body.content)}, IMG_PATH=${con.escape(file.filename)},`;
+            sql = `UPDATE PROFESSDT SET PROFESS_TITLE=${con.escape(req.body.title)} , PROFESS_CONTENT=${con.escape(req.body.content)}, IMG_PATH=${con.escape(file.filename)},UPDATE_DATE=NOW() WHERE PROFESS_NO=${con.escape(req.body.professNo)} AND PROFESSDT_NO=${con.escape(req.body.professDtNo)};`;
         }
 
         console.log(sql);
@@ -170,6 +170,8 @@ router.post('/delete', (req,res)=>{
 
 });
 
+
+
 router.post('/more', (req,res)=>{
     
     if(req.session.email){
@@ -195,6 +197,54 @@ router.post('/more', (req,res)=>{
                     // res.json({message:message});
                 }
             });
+    }else{
+        res.json({logind:'0'});
+    }
+
+});
+
+router.post('/select', (req,res)=>{
+    
+    if(req.session.email){
+        let sql;
+        if(req.body.selectGb == 'category'){
+            sql = `SELECT R1.* FROM(SELECT PROFESSDT.*,PROFESSM.CATEGORY_CODE FROM PROFESSDT
+                RIGHT JOIN PROFESSM 
+                ON PROFESSM.PROFESS_NO = PROFESSDT.PROFESS_NO
+                where 1=1 AND CATEGORY_CODE=${con.escape(req.body.category)}
+                ORDER BY PROFESSDT.PROFESS_NO DESC
+                )R1
+                LIMIT 10 OFFSET 0`;
+        }else if(req.body.selectGb == 'popular'){
+            sql = `SELECT R1.* FROM(SELECT PROFESSDT.*,PROFESSM.CATEGORY_CODE FROM PROFESSDT
+                RIGHT JOIN PROFESSM 
+                ON PROFESSM.PROFESS_NO = PROFESSDT.PROFESS_NO
+                where 1=1
+                ORDER BY PROFESSDT.GOOD_CNT DESC
+                )R1
+                LIMIT 10 OFFSET 0`;
+        }else{//recently
+            sql = `SELECT R1.* FROM(
+                SELECT * FROM PROFESSDT
+                order by PROFESSDT.PROFESS_NO DESC
+                )R1
+                LIMIT 10 OFFSET 0`;
+        }
+        console.log(sql);
+        con.query(sql, function (err, result, fields) {
+            if (err) {
+                console.log(err);
+            }else{
+                console.log(result.length);
+                if(result.length > 0){
+                    console.log("FEEDLIST SELECT OK");
+                    res.render('feed-main-section', {result, dataYn : '1', loginEmail : req.session.email});
+                }else{
+                    res.render('feed-main-section', {dataYn : '0'});
+                }
+                // res.json({message:message});
+            }
+        });
     }else{
         res.json({logind:'0'});
     }

@@ -1,9 +1,9 @@
 const mysql = require('mysql');
 
 const db_config = {
-    host: "localhost",
-    user: "root",
-    password: "mysql",
+    host: "70.12.113.171",
+    user: "test",
+    password: "test",
     port:"3307",
     database:"professeffect"
 }

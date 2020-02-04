@@ -10,26 +10,26 @@
                      <span class="nickname"><%=result[i].nick_name%></span>
                      <%=result[i].profess_title%>
                      <%if(result[i].user_email == loginEmail){%>
-                      <i class='fas fa-ellipsis-h' data-toggle="modal" data-target="#myModal" style='font-size:32px;color:rgb(38, 38, 38);'></i>
+                      <i class='fas fa-ellipsis-h' data-toggle="modal" data-target="#myModal<%=i%>" style='font-size:32px;color:rgb(38, 38, 38);'></i>
                     
                       <!-- The Modal -->
-                      <div class="modal" id="myModal">
+                      <div class="modal" id="myModal<%=i%>">
                         <div class="modal-dialog modal-dialog-centered">
                           <div class="modal-content">
                           
                             <!-- Modal Header -->
                             <div class="modal-header">
                               <h4 class="modal-title"><%=result[i].profess_title%></h4>
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <button type="button" class="close" data-dismiss="modal<%=i%>">&times;</button>
                             </div>
                             
                             <!-- Modal body -->
                             <div class="modal-body">
                                 <div class="list-group">
-                                    <a onclick="goUpdateFeedForm('<%=result[i].profess_no%>','<%=result[i].professdt_no%>');" class='list-group-item list-group-item-action list-group-item-light modal-text feed-update-btn'>
+                                    <a onclick="goUpdateFeedForm('<%=i%>','<%=result[i].profess_no%>','<%=result[i].professdt_no%>');" class='list-group-item list-group-item-action list-group-item-light modal-text feed-update-btn'>
                                         <span class="nickname">수정</span>	
                                     </a>
-                                    <a onclick="deleteFeed('<%=result[i].profess_no%>','<%=result[i].professdt_no%>');" class="list-group-item list-group-item-action list-group-item-light modal-text feed-delete-btn">
+                                    <a onclick="deleteFeed('<%=i%>','<%=result[i].profess_no%>','<%=result[i].professdt_no%>');" class="list-group-item list-group-item-action list-group-item-light modal-text feed-delete-btn">
                                         <span class="nickname">삭제</span>	
                                     </a>
                                 </div>
@@ -37,7 +37,7 @@
                             
                             <!-- Modal footer -->
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-danger" data-dismiss="modal<%=i%>">Close</button>
                             </div>
                             
                           </div>

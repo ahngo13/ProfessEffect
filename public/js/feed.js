@@ -4,8 +4,8 @@ function feedWrite(){
     const professTitle = $('#professTitle').val();
     const professContent = $('#professContent').val();
     const imgFile = $('#imgFile')[0].files[0];
-    const imgName = $('#imgFile')[0].defaultValue;
-    const imgExp = /([^\s]+(?=\.(jpg|gif|png))\.\2)/;
+    const imgName = imgFile.name;
+    const imgExp = /([^\s]+(?=\.(jpg|gif|png|jpeg))\.\2)/;
     const formData = new FormData();
 
     let errMsg = '';
@@ -26,7 +26,7 @@ function feedWrite(){
         $('#professContent').focus();
         return;
     }else if(imgFile != undefined){ 
-        if(imgName.match(imgExp) == null && imgName != ''){
+        if(imgName.match(imgExp) == null){
             errMsg = "jpg, gif, png 형식의 이미지 파일만 첨부 가능합니다.";
             $('#feed-write-error-msg').html(errMsg);
             return;
@@ -83,7 +83,7 @@ function feedUpdate(professNo, professDtNo){
     const professTitle = $('#professTitle').val();
     const professContent = $('#professContent').val();
     const imgFile = $('#imgFile')[0].files[0];
-    const imgName = $('#imgFile')[0].defaultValue;
+    const imgName = imgFile.name;
     const imgExp = /([^\s]+(?=\.(jpg|gif|png))\.\2)/;
 
     const formData = new FormData();
@@ -104,7 +104,7 @@ function feedUpdate(professNo, professDtNo){
         $('#professContent').focus();
         return;
     }else if(imgFile != undefined){ 
-        if(imgName.match(imgExp) == null && imgName != ''){
+        if(imgName.match(imgExp) == null){
             errMsg = "jpg, gif, png 형식의 이미지 파일만 첨부 가능합니다.";
             $('#feed-write-error-msg').html(errMsg);
             return;

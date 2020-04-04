@@ -1,22 +1,14 @@
 const mysql = require('mysql');
 
 const db_config = {
-    host: "70.12.113.171",
-    user: "test",
-    password: "test",
-    port:"3307",
-    database:"professeffect"
-}
-
-const con = mysql.createPool(db_config);
-
-/* const con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "mysql",
     port:"3307",
     database:"professeffect"
-}); */
+}
+
+const con = mysql.createPool(db_config);
 
 con.getConnection(function(err){
     if(err) {

@@ -29,8 +29,19 @@ router.post('/',(req,res,next)=>{
                                 console.log("fail the good");
                                 res.json({message:"좋아요 실패"});
                             }else{
+                                sql = `UPDATE PROFESSDT SET GOOD_CNT = GOOD_CNT+1 WHERE PROFESS_NO = ${con.escape(req.body.professNo)} AND PROFESSDT_NO = ${con.escape(req.body.professDtNo)}`;
                                 console.log("insert the good");
-                                res.json({message:"좋아요 되었습니다.", heartColor : '1' });
+                                console.log(sql);
+                                con.query(sql, function (err, result, fields) {
+                                    if (err) {
+                                        console.log(err);
+                                        console.log("fail the good");
+                                        res.json({message:"좋아요 실패"});
+                                    }else{
+                                        console.log("update the good");
+                                        res.json({message:"좋아요 되었습니다.", heartColor : '1' });
+                                    }
+                                });
                             }
                         });
                     }else{
@@ -44,8 +55,19 @@ router.post('/',(req,res,next)=>{
                                         console.log("fail the good");
                                         res.json({message:"좋아요 실패"});                                    
                                     }else{
-                                        console.log("cancel the good");
-                                        res.json({message:"좋아요를 취소했습니다.", heartColor : '0'})
+                                        sql = `UPDATE PROFESSDT SET GOOD_CNT = GOOD_CNT-1 WHERE PROFESS_NO = ${con.escape(req.body.professNo)} AND PROFESSDT_NO = ${con.escape(req.body.professDtNo)}`;
+                                        console.log("update the good");
+                                        console.log(sql);
+                                        con.query(sql, function (err, result, fields) {
+                                            if (err) {
+                                                console.log(err);
+                                                console.log("fail the good");
+                                                res.json({message:"좋아요 실패"});
+                                            }else{
+                                                console.log("cancel the good");
+                                                res.json({message:"좋아요를 취소했습니다.", heartColor : '' });
+                                            }
+                                        });
                                     }
                                 });
                             }else{
@@ -56,8 +78,19 @@ router.post('/',(req,res,next)=>{
                                         console.log("fail the good");
                                         res.json({message:"좋아요 실패"});                                    
                                     }else{
-                                        console.log("update the good");
-                                        res.json({message:"좋아요를  다시 눌렀습니다.", heartColor : '1'})
+                                        sql = `UPDATE PROFESSDT SET GOOD_CNT = GOOD_CNT+1 WHERE PROFESS_NO = ${con.escape(req.body.professNo)} AND PROFESSDT_NO = ${con.escape(req.body.professDtNo)}`;
+                                        console.log("insert the good");
+                                        console.log(sql);
+                                        con.query(sql, function (err, result, fields) {
+                                            if (err) {
+                                                console.log(err);
+                                                console.log("fail the good");
+                                                res.json({message:"좋아요 실패"});
+                                            }else{
+                                                console.log("update the good");
+                                                res.json({message:"좋아요 되었습니다.", heartColor : '1' });
+                                            }
+                                        });
                                     }
                                 });                            
                             }

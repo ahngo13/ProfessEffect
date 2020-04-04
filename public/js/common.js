@@ -28,18 +28,19 @@ function goProfessWriteForm(){
     });
 }
 
-function pushGood(professNo, professDtNo){
-    //alert("Test");
-    //const userInfoEmail = $('#req.session.email').val();
-    //alert(req.session.email);
- //   const send_param = {userInfoEmail};
+function pushGood(professNo, professDtNo, i){
+
     const send_param = {professNo, professDtNo};
     $.post('/push-good',send_param,function(resultData){
         alert(resultData.message);
         if(resultData.heartColor==1){
-            $("#heartGood").css("style", "red");
+            $("#heartGood"+i).removeClass('far');
+            $("#heartGood"+i).addClass('fas');
+            $("#goodCnt"+i)[0].innerText = parseInt($("#goodCnt"+i)[0].innerText) + 1;
         }else{
-            $("#heartGood").css("style", "black");
+            $("#heartGood"+i).removeClass('fas');
+            $("#heartGood"+i).addClass('far');
+            $("#goodCnt"+i)[0].innerText = parseInt($("#goodCnt"+i)[0].innerText) - 1;
         }
         
         //location.reload();

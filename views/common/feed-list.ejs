@@ -8,7 +8,6 @@
                  <div class="feed-list-header">
                      <img src="image/icon.png" class=".img-thumbnail icon-img">
                      <span class="nickname"><%=result[i].nick_name%></span>
-                     <%=result[i].profess_title%>
                      <%if(result[i].user_email == loginEmail){%>
                       <i class='fas fa-ellipsis-h' data-toggle="modal" data-target="#myModal<%=i%>" style='font-size:32px;color:rgb(38, 38, 38);'></i>
                     
@@ -47,58 +46,27 @@
                  </div>
                  <!-- //feed list 헤더 -->
                  <!-- feed list 바디 -->
-                 <!-- <div id="demo" class="carousel slide text-align-center" data-ride="carousel"> -->
-                                         <!-- Indicators -->
-                     <!-- <ul class="carousel-indicators">
-                         <li data-target="#demo" data-slide-to="0" class="active"></li>
-                         <li data-target="#demo" data-slide-to="1"></li>
-                         <li data-target="#demo" data-slide-to="2"></li>
-                     </ul> -->
- 
-                     <!-- The slideshow -->
-                     <!-- <div class="carousel-inner">
-                         <div class="carousel-item active"> -->
-                             <%if(result[i].img_path){%>
-                             <img class="feedimg" src="./upload/<%=result[i].img_path%>">
-                             <%}%>
-                             <!--	</div>
-                          <div class="carousel-item">
-                             <img class="feedimg" src="./image/feed2.png">
-                         </div>
-                         <div class="carousel-item">
-                             <img class="feedimg" src="./image/feed1.png">
-                         </div> -->
-                     <!-- </div>-->
-  
-                     <!-- Left and right controls -->
-                     <!-- <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                         <span class="carousel-control-prev-icon"></span>
-                     </a> <a class="carousel-control-next" href="#demo" data-slide="next">
-                         <span class="carousel-control-next-icon"></span>
-                     </a> 
-                 </div> -->
-                 
-                 <!-- feed 버튼 영역(좋아요, 댓글) -->
-                  <div class="feed-list-button">
-                     <i class='fas fa-heart' onclick="javascript:pushGood('<%=result[i].profess_no%>','<%=result[i].professdt_no%>');" style='font-size:32px;color:red'></i>
-                      <i class='far fa-heart' style='font-size:32px;color:red'></i>
-                      <i class='far fa-comment-dots' style="font-size:32px;color:rgb(38, 38, 38);"></i>
-                     좋아요 <%=result[i].good_cnt%>
-                 </div> 
-                 <!--// feed 버튼 영역(좋아요, 댓글) -->
-                 
-                 <!-- feed 텍스트 영역 -->
-                 <div class="feed-list-text">
-                     <%=result[i].profess_content%>
-                 </div>
-                 <!--// feed 텍스트 영역 -->
-                 
-                 <!-- feed 댓글 영역 -->
-                 <!-- <div class="feed-list-reply">
-                     <div><span class="nickname">갓릿슈</span> : 저는 매일 한 시간씩 걸을 거라는 친구의 말에 하루에 한번씩 친구에게 태클을 걸기로 했습니다!</div>
-                     <div><span class="nickname">구독자1만명가즈아</span> : 응원합니다!</div>
-                 </div> -->
-                 <!--// feed 댓글 영역 -->
+                    <%if(result[i].img_path){%>
+                    <img class="feedimg" src="./upload/<%=result[i].img_path%>">
+                    <%}%>
+                    
+                    <!-- feed 버튼 영역(좋아요, 댓글) -->
+                    <div class="feed-list-button">
+                        <% if(result[i].good_yn == '1'){%>
+                        <i id='heartGood<%=i%>' class='fas fa-heart' onclick="javascript:pushGood('<%=result[i].profess_no%>','<%=result[i].professdt_no%>', '<%=i%>');" style='font-size:32px;color:red'></i>
+                        <%}else{%>
+                        <i id='heartGood<%=i%>' class='far fa-heart' onclick="javascript:pushGood('<%=result[i].profess_no%>','<%=result[i].professdt_no%>', '<%=i%>');" style='font-size:32px;color:red'></i>    
+                        <%}%>
+                        좋아요 <span id='goodCnt<%=i%>'><%=result[i].good_cnt%></span>개
+                    </div> 
+                    <!--// feed 버튼 영역(좋아요, 댓글) -->
+                    
+                    <!-- feed 텍스트 영역 -->
+                    <div class="feed-list-text">
+                        <div style="font-size: 40px;"><%=result[i].profess_title%></div>
+                        <div><%=result[i].profess_content%></div>
+                    </div>
+                    <!--// feed 텍스트 영역 -->
                  <!-- /feed list 바디 -->
              </div>
              <!--// feed list 영역 -->

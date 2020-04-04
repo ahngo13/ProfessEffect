@@ -18,7 +18,7 @@ router.post('/', (req,res)=>{
                 console.log("LOGIN OK");
                 
                 sql = `SELECT R1.* FROM(
-                    SELECT * FROM PROFESSDT
+                    SELECT PROFESSDT.*, GOOD.good_yn  FROM PROFESSDT LEFT OUTER JOIN GOOD ON PROFESSDT.PROFESS_NO = GOOD.PROFESS_NO AND PROFESSDT.PROFESSDT_NO = GOOD.PROFESSDT_NO AND GOOD.USER_EMAIL = '${req.session.email}'
                     order by PROFESSDT.PROFESS_NO DESC
                     )R1
                     LIMIT 10 OFFSET 0`;

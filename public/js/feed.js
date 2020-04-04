@@ -168,9 +168,15 @@ let start = 10;
 let list = 10;
 
 function appendList(){
+
+    const category = $('#category').val();
+    const selectGb = $('#selectGb').val();
+
     const send_param = {
         start,
-        list
+        list,
+        category,
+        selectGb
     };
 
     $.post('/feed/more', send_param, function(resultData){
@@ -213,6 +219,10 @@ function selectFeed(selectGb){
             selectGb = 'category';
         }
     }
+
+    $('#selectGb').val(selectGb);
+    $('#category').val(category);
+
     const send_param = {selectGb, category};
 
     $.post('/feed/select', send_param, function(resultData){

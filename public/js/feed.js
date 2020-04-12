@@ -83,7 +83,11 @@ function feedUpdate(professNo, professDtNo){
     const professTitle = $('#professTitle').val();
     const professContent = $('#professContent').val();
     const imgFile = $('#imgFile')[0].files[0];
-    const imgName = imgFile.name;
+    let imgName;
+    if(imgFile != undefined){
+        imgName = imgFile.name;
+    }
+    
     const imgExp = /([^\s]+(?=\.(jpg|gif|png))\.\2)/;
 
     const formData = new FormData();
